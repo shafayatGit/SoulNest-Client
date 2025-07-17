@@ -48,10 +48,10 @@ const Banner = () => {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/50 bg-opacity-40 flex flex-col justify-center items-center text-center text-white px-6">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">{slide.title}</h2>
-              <p className="text-lg md:text-xl max-w-2xl">{slide.subtitle}</p>
+              <h2 className="text-[#76b0bb] text-3xl md:text-5xl font-bold mb-4">{slide.title}</h2>
+              <p className="text-lg text-[#578b96] md:text-xl max-w-2xl">{slide.subtitle}</p>
               <button
-                className="text-black mt-6"
+                className="text-[#8a6c42] mt-6"
               >
                 Get Started
               </button>
