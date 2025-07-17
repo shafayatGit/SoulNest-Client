@@ -70,38 +70,28 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-black/50 bg-opacity-40 shadow-md px-6 py-4 space-y-3 absolute flex flex-col text-center w-full z-[1000]">
-          <Link to="/" onClick={toggleMenu}>
-            Home
-          </Link>
-          <Link to="/biodatas" onClick={toggleMenu}>
-            Biodatas
-          </Link>
-          <Link to="/about" onClick={toggleMenu}>
-            About Us
-          </Link>
-          <Link to="/contact" onClick={toggleMenu}>
-            Contact Us
-          </Link>
-          <Link to="/dashboard" onClick={toggleMenu}>
-            Dashboard
-          </Link>
+        <div className="md:hidden bg-black/30 bg-opacity-40  shadow-md px-6 py-4 space-y-8 absolute flex flex-col text-center w-full z-[1000]">
+          <NavLink className={({isActive})=>isActive?"border-b-2 border-b-[#8a6c42] text-[#8a6c42]":" hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"} to="/">Home</NavLink>
+          <NavLink className={({isActive})=>isActive?"border-b-2 border-b-[#8a6c42] text-[#8a6c42]":" hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"} to="/biodatas">Biodatas</NavLink>
+          <NavLink className={({isActive})=>isActive?"border-b-2 border-b-[#8a6c42] text-[#8a6c42]":"hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"} to="/about">About Us</NavLink>
+          <NavLink className={({isActive})=>isActive?"border-b-2 border-b-[#8a6c42] text-[#8a6c42]":"hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"} to="/contact">Contact Us</NavLink>
+          <NavLink className={({isActive})=>isActive?"border-b-2 border-b-[#8a6c42] text-[#8a6c42]":" hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"} to="/dashboard">Dashboard</NavLink>
 
           <div >
-          {user ? (
+           {user ? (
             <>
-              <Link onClick={handleLogOut} className="">
+              <NavLink onClick={handleLogOut} className="">
                 <button >LogOut</button>
-              </Link>
+              </NavLink>
             </>
           ) : (
             <div className="flex flex-col gap-5">
-              <Link className="" to="/login">
+              <NavLink className={({isActive})=>isActive?"":""} to="/login">
                 <button>Login</button>
-              </Link>
-              <Link className="" to="/register">
+              </NavLink>
+              <NavLink className="" to="/register">
                 <button>Register</button>
-              </Link>
+              </NavLink>
             </div>
           )}
         </div>

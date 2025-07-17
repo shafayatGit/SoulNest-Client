@@ -58,7 +58,7 @@ const Banner = () => {
                 {slide.subtitle}
               </p>
               <Link to={"/register"}>
-                <button className="text-[#8a6c42] mt-6">Registration</button>
+                <button className="text-[#8a6c42] text-xl mt-6">Register</button>
               </Link>
             </div>
           </div>
