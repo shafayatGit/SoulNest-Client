@@ -25,14 +25,14 @@ button {
 }
 
 button:hover {
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   background-color: #8a6c42;
   color: hsl(0, 0%, 100%);
   box-shadow: #8a6c42;
 }
 
 button:active {
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   background-color: #8a6c42;
   color: hsl(0, 0%, 100%);
   box-shadow: #8a6c42;
