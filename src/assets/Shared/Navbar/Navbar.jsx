@@ -1,11 +1,19 @@
 // Navbar.jsx
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../AuthContext/AuthContext";
+import Aos from "aos";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+   useEffect(() => {
+      Aos.init({
+        duration: 900, // animation duration
+        once: false, // only once per element
+        offset: 200, // offset (in px) from the original trigger point
+      });
+    }, []);
 
   const handleLogOut = () => {
     logOut()
@@ -62,7 +70,7 @@ const Navbar = () => {
                     ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
                     : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
                 }
-                to="/about"
+                to="/aboutUs"
               >
                 About Us
               </NavLink>
@@ -72,7 +80,7 @@ const Navbar = () => {
                     ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
                     : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
                 }
-                to="/contact"
+                to="/contactUs"
               >
                 Contact Us
               </NavLink>
@@ -149,7 +157,7 @@ const Navbar = () => {
                 ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
                 : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"
             }
-            to="/about"
+            to="/aboutUs"
           >
             About Us
           </NavLink>
@@ -159,7 +167,7 @@ const Navbar = () => {
                 ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
                 : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"
             }
-            to="/contact"
+            to="/contactUs"
           >
             Contact Us
           </NavLink>

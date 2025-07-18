@@ -1,12 +1,20 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { FaFacebook, FaInstagram, FaTwitter, FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router";
 import { AuthContext } from "../../AuthContext/AuthContext";
+import Aos from "aos";
 
 const Footer = () => {
   const { user } = useContext(AuthContext);
+  useEffect(() => {
+    Aos.init({
+      duration: 900, // animation duration
+      once: false, // only once per element
+      offset: 200, // offset (in px) from the original trigger point
+    });
+  }, []);
   return (
-    <footer className="nuni bg-gradient-to-r from-[#8a6c42] via-[#8a7457] to-[#8f816d] text-white mt-16">
+    <footer data-aos="fade-right" className="nuni bg-gradient-to-r from-[#8a6c42] via-[#8a7457] to-[#8f816d] text-white mt-16">
       <div className="max-w-7xl mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo & Name */}
         <div>

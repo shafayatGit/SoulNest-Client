@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router";
 import toast, { Toaster } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
+import Aos from "aos";
 
 const Registration = () => {
   const { createUser,signInWithGoogle,user } = useContext(AuthContext);
@@ -18,6 +19,14 @@ const Registration = () => {
     formState: { errors },
     reset,
   } = useForm();
+
+  useEffect(() => {
+          Aos.init({
+            duration: 900, // animation duration
+            once: false, // only once per element
+            offset: 200, // offset (in px) from the original trigger point
+          });
+        }, [])
 
   const onSubmit = (data) => {
     console.log("Registered User:", data);
@@ -51,11 +60,11 @@ const Registration = () => {
   return (
     <div className="libre flex justify-center items-center min-h-screen bg-gray-50">
       <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl">
-        <h2 className="text-center mb-6 libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
+        <h2 data-aos="fade-down" className="text-center mb-6 libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
           Create Account
         </h2>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form data-aos="fade-up" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Name */}
           <div>
             <label className="block mb-1 font-medium">Name</label>
@@ -139,7 +148,7 @@ const Registration = () => {
         {/* Divider */}
         <div className="divider my-4">OR</div>
         {/* Google Sign-In */}
-        <button
+        <button data-aos="fade-down"
           onClick={handleGoogleSignIn}
           className=" w-full flex items-center justify-center gap-2"
         >
@@ -147,7 +156,7 @@ const Registration = () => {
         </button>
 
         {/* Link to Registration */}
-        <p className="text-center mt-6 text-sm">
+        <p data-aos="fade-down" className="text-center mt-6 text-sm">
           Already have an account?{" "}
           <Link
             to="/login"

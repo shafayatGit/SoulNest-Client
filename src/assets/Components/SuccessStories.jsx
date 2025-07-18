@@ -2,11 +2,16 @@ import { FaStar } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import Aos from "aos";
 
 const SuccessStories = () => {
   useEffect(() => {
-    AOS.init({ duration: 800 });
-  }, []);
+         Aos.init({
+           duration: 900, // animation duration
+           once: false, // only once per element
+           offset: 200, // offset (in px) from the original trigger point
+         });
+       }, []);
 
   const stories = [
     {
@@ -43,7 +48,7 @@ const SuccessStories = () => {
 
   return (
     <section className=" nuni py-16 px-4 lg:px-20">
-      <div className="text-center mb-12" data-aos="fade-up">
+      <div className="text-center mb-12" data-aos="fade-down">
         <h2 className="text-4xl font-bold  mb-2">
           ❤️ <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">Nikah Success Stories</span>
         </h2>
@@ -55,10 +60,10 @@ const SuccessStories = () => {
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {sortedStories.map((story) => (
-          <div
+          <div data-aos="fade-up"
             key={story.id}
             className="border-2 border-[#bda373] p-6 rounded-xl shadow hover:shadow-lg transition"
-            data-aos="fade-up"
+          
           >
             <img
               src={story.image}

@@ -1,7 +1,19 @@
 // src/Pages/Home/HowItWorks.jsx
 import { FaUserPlus, FaSearch, FaHandshake } from "react-icons/fa";
+import { fadeIn, fadeLeft } from "../Shared/Motion/Motion";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
+import Aos from "aos";
 
 const HowItWorks = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 900, // animation duration
+      once: false, // only once per element
+      offset: 200, // offset (in px) from the original trigger point
+    });
+  }, []);
+
   const steps = [
     {
       icon: <FaUserPlus className="text-4xl text-amber-600" />,
@@ -21,17 +33,23 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="nuni mt-24 py-16 px-4 lg:px-20" id="how-it-works">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold  mb-2 ">🧭 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#cfb992] to-[#8a6c42]">How It Works</span></h2>
+    <div  className="nuni mt-24 py-16 px-4 lg:px-20" id="how-it-works">
+      <div data-aos="fade-down" className="text-center mb-12">
+        <h2 className="text-4xl font-bold  mb-2 ">
+          🧭{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#cfb992] to-[#8a6c42]">
+            How It Works
+          </span>
+        </h2>
         <p className="text-xl max-w-xl mx-auto">
-          Simple steps to find your perfect life partner with sincerity and trust.
+          Simple steps to find your perfect life partner with sincerity and
+          trust.
         </p>
       </div>
 
       <div className="grid gap-10 md:grid-cols-3">
         {steps.map((step, index) => (
-          <div
+          <div data-aos="fade-up"
             key={index}
             className="border-[#908549] border-2 p-6 rounded-xl shadow-md hover:shadow-lg transition"
           >
@@ -41,7 +59,7 @@ const HowItWorks = () => {
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

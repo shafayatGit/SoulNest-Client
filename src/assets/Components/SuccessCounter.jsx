@@ -6,12 +6,13 @@ import { useInView } from "react-intersection-observer";
 
 const SuccessCounter = () => {
 
-    useEffect(() => {
-  Aos.init({
-    duration: 1000,  // animation duration
-    once: true       // animate only once
-  });
-}, []);
+   useEffect(() => {
+       Aos.init({
+         duration: 900, // animation duration
+         once: false, // only once per element
+         offset: 200, // offset (in px) from the original trigger point
+       });
+     }, []);
 
   const stats = [
     {
@@ -40,7 +41,7 @@ const SuccessCounter = () => {
 
   return (
     <section className="nuni py-16 px-4 lg:px-20">
-      <div className="text-center mb-12" ref={ref}>
+      <div data-aos="fade-down" className="text-center mb-12" ref={ref}>
         <h2 className="text-4xl font-bold mb-2">📊 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42] ">Our Success Stories</span></h2>
         <p className="text-xl max-w-xl mx-auto">
           Alhamdulillah! We’ve helped thousands find their halal life partner.
@@ -49,7 +50,7 @@ const SuccessCounter = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {stats.map((item, index) => (
-          <div
+          <div data-aos="fade-up"
             key={index}
             className="border-2 border-[#bda373] rounded-xl shadow-md p-6 hover:shadow-xl transition"
           >

@@ -2,8 +2,17 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router";
+import { useEffect } from "react";
+import Aos from "aos";
 
 const Banner = () => {
+   useEffect(() => {
+      Aos.init({
+        duration: 900, // animation duration
+        once: false, // only once per element
+        offset: 200, // offset (in px) from the original trigger point
+      });
+    }, []);
   const settings = {
     dots: true,
     infinite: true,
@@ -41,7 +50,7 @@ const Banner = () => {
   ];
 
   return (
-    <div className="libre relative z-10">
+    <div data-aos="fade-in" className="libre relative z-10">
       <Slider {...settings}>
         {slides.map((slide) => (
           <div key={slide.id} className="relative h-[80vh]">
