@@ -23,7 +23,7 @@ const HowItWorks = () => {
   return (
     <section className="nuni mt-24 py-16 px-4 lg:px-20" id="how-it-works">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold  mb-2">How It Works</h2>
+        <h2 className="text-4xl font-bold  mb-2 ">🧭 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#cfb992] to-[#8a6c42]">How It Works</span></h2>
         <p className="text-xl max-w-xl mx-auto">
           Simple steps to find your perfect life partner with sincerity and trust.
         </p>

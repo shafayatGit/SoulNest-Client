@@ -41,7 +41,7 @@ const SuccessCounter = () => {
   return (
     <section className="nuni py-16 px-4 lg:px-20">
       <div className="text-center mb-12" ref={ref}>
-        <h2 className="text-4xl font-bold text-gray-800 mb-2">Our Success Stories</h2>
+        <h2 className="text-4xl font-bold mb-2">📊 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42] ">Our Success Stories</span></h2>
         <p className="text-xl max-w-xl mx-auto">
           Alhamdulillah! We’ve helped thousands find their halal life partner.
         </p>

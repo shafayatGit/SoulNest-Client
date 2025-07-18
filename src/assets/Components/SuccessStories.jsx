@@ -45,7 +45,7 @@ const SuccessStories = () => {
     <section className=" nuni py-16 px-4 lg:px-20">
       <div className="text-center mb-12" data-aos="fade-up">
         <h2 className="text-4xl font-bold  mb-2">
-          Success Stories
+          ❤️ <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">Nikah Success Stories</span>
         </h2>
         <p className="text-xl max-w-xl mx-auto">
           Read beautiful stories from couples who found love through our
