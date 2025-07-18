@@ -39,7 +39,7 @@ const SuccessCounter = () => {
   const { ref, inView } = useInView();
 
   return (
-    <section className="libre py-16 px-4 lg:px-20">
+    <section className="nuni py-16 px-4 lg:px-20">
       <div className="text-center mb-12" ref={ref}>
         <h2 className="text-4xl font-bold text-gray-800 mb-2">Our Success Stories</h2>
         <p className="text-xl max-w-xl mx-auto">
@@ -51,7 +51,7 @@ const SuccessCounter = () => {
         {stats.map((item, index) => (
           <div
             key={index}
-            className=" rounded-xl shadow-md p-6 hover:shadow-xl transition"
+            className="border-2 border-[#bda373] rounded-xl shadow-md p-6 hover:shadow-xl transition"
           >
             <div className="mb-3">{item.icon}</div>
             <h3 className="text-3xl font-bold ">

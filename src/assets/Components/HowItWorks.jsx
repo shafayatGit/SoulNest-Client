@@ -21,7 +21,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="libre mt-24 py-16 px-4 lg:px-20" id="how-it-works">
+    <section className="nuni mt-24 py-16 px-4 lg:px-20" id="how-it-works">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold  mb-2">How It Works</h2>
         <p className="text-xl max-w-xl mx-auto">
