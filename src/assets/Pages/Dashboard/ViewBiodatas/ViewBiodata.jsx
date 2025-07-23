@@ -1,0 +1,128 @@
+import { useQuery } from "@tanstack/react-query";
+
+import { useContext } from "react";
+import { AuthContext } from "../../../AuthContext/AuthContext";
+// import axiosSecure from '../../../hooks/useAxiosSecure';
+import useAxios from "../../../hooks/useAxios";
+
+const ViewBiodata = () => {
+  const axios = useAxios();
+  const { user } = useContext(AuthContext);
+  //   console.log(user.email)
+
+  const { data: myBiodatas = [], isLoading } = useQuery({
+    queryKey: ["myBiodatas", user?.email],
+    enabled: !!user?.email,
+    queryFn: async () => {
+      const res = await axios.get(`/myBiodatas?email=${user.email}`);
+      return res.data;
+    },
+  });
+
+  //   const handleMakePremium = () => {
+  //     Swal.fire({
+  //       title: 'Make Premium?',
+  //       text: 'Are you sure you want to request premium status for your biodata?',
+  //       icon: 'question',
+  //       showCancelButton: true,
+  //       confirmButtonText: 'Yes, request it!',
+  //     }).then(async (result) => {
+  //       if (result.isConfirmed) {
+  //         await axiosSecure.post(`/api/biodata/premium-request/${biodata.BiodataId}`);
+  //         refetch();
+  //         Swal.fire('Requested!', 'Your biodata has been sent for premium approval.', 'success');
+  //       }
+  //     });
+  //   };
+
+  return (
+    <div className="max-w-4xl mx-auto p-4">
+      {myBiodatas.map((biodata) => (
+        <div className="border rounded p-4 shadow">
+          <img
+            src={biodata.profileImage}
+            alt="Profile"
+            className="w-32 h-32 rounded-full mx-auto"
+          />
+          <h2 className="text-2xl text-center font-bold my-2">
+            {biodata.name}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <p>
+              <b>Biodata Type:</b> {biodata.biodataType}
+            </p>
+            <p>
+              <b>Date of Birth:</b> {biodata.dob}
+            </p>
+            <p>
+              <b>Height:</b> {biodata.height}
+            </p>
+            <p>
+              <b>Weight:</b> {biodata.weight}
+            </p>
+            <p>
+              <b>Age:</b> {biodata.age}
+            </p>
+            <p>
+              <b>Occupation:</b> {biodata.occupation}
+            </p>
+            <p>
+              <b>Race:</b> {biodata.race}
+            </p>
+            <p>
+              <b>Father's Name:</b> {biodata.fatherName}
+            </p>
+            <p>
+              <b>Mother's Name:</b> {biodata.motherName}
+            </p>
+            <p>
+              <b>Permanent Division:</b> {biodata.permanentDivision}
+            </p>
+            <p>
+              <b>Present Division:</b> {biodata.presentDivision}
+            </p>
+            <p>
+              <b>Expected Partner Age:</b> {biodata.expectedPartnerAge}
+            </p>
+            <p>
+              <b>Expected Partner Height:</b> {biodata.expectedPartnerHeight}
+            </p>
+            <p>
+              <b>Expected Partner Weight:</b> {biodata.expectedPartnerWeight}
+            </p>
+            <p>
+              <b>Contact Email:</b> {biodata.email}
+            </p>
+            <p>
+              <b>Mobile Number:</b> {biodata.mobileNumber}
+            </p>
+          </div>
+
+          {!myBiodatas.premiumApproved && (
+            <div className="text-center mt-6">
+              <button
+                //   onClick={handleMakePremium}
+                className="bg-purple-600 hover:bg-purple-700 text-black py-2 px-6 rounded"
+              >
+                Make Biodata to Premium
+              </button>
+            </div>
+          )}
+
+          {myBiodatas.premiumRequest && !myBiodatas.premiumApproved && (
+            <p className="text-center text-yellow-600 mt-2">
+              Awaiting Admin Approval
+            </p>
+          )}
+          {myBiodatas.premiumApproved && (
+            <p className="text-center text-green-600 mt-2 font-semibold">
+              You are a Premium Member!
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ViewBiodata;

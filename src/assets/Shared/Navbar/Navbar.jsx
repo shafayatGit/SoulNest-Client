@@ -58,7 +58,7 @@ const Navbar = () => {
                 ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
                 : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
             }
-            to="/biodatas"
+            to="/allBiodata"
           >
             Biodatas
           </NavLink>
