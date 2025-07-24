@@ -4,13 +4,14 @@ import { useContext } from "react";
 import { AuthContext } from "../../../AuthContext/AuthContext";
 // import axiosSecure from '../../../hooks/useAxiosSecure';
 import useAxios from "../../../hooks/useAxios";
+import { useNavigate } from "react-router";
 
 const ViewBiodata = () => {
   const axios = useAxios();
   const { user } = useContext(AuthContext);
-  //   console.log(user.email)
+  const navigate = useNavigate()
 
-  const { data: myBiodatas = [], isLoading } = useQuery({
+  const { data: myBiodatas = [], isPending } = useQuery({
     queryKey: ["myBiodatas", user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
@@ -18,6 +19,16 @@ const ViewBiodata = () => {
       return res.data;
     },
   });
+
+  if (isPending) {
+    return (
+      <div className="w-full min-h-dvh flex justify-center items-center">
+        <span className="loading loading-dots loading-xl"></span>
+      </div>
+    );
+  }
+
+  
 
   //   const handleMakePremium = () => {
   //     Swal.fire({
@@ -98,18 +109,18 @@ const ViewBiodata = () => {
             </p>
           </div>
 
-          {!myBiodatas.premiumApproved && (
             <div className="text-center mt-6">
               <button
-                //   onClick={handleMakePremium}
+                  // onClick={()=>handlePayment(biodata._id)}
                 className="bg-purple-600 hover:bg-purple-700 text-black py-2 px-6 rounded"
               >
                 Make Biodata to Premium
               </button>
             </div>
-          )}
+          {/* {!myBiodatas.premiumApproved && (
+          )} */}
 
-          {myBiodatas.premiumRequest && !myBiodatas.premiumApproved && (
+          {/* {myBiodatas.premiumRequest && !myBiodatas.premiumApproved && (
             <p className="text-center text-yellow-600 mt-2">
               Awaiting Admin Approval
             </p>
@@ -118,7 +129,7 @@ const ViewBiodata = () => {
             <p className="text-center text-green-600 mt-2 font-semibold">
               You are a Premium Member!
             </p>
-          )}
+          )} */}
         </div>
       ))}
     </div>

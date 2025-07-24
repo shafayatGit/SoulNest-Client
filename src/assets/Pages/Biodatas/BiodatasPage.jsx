@@ -32,23 +32,13 @@ const BiodatasPage = () => {
     },
   });
 
-  if (isLoading)
+  if (isLoading) {
     return (
-      <div class="spinner center">
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
+      <div className="w-full min-h-dvh flex justify-center items-center">
+        <span className="loading loading-dots loading-xl"></span>
       </div>
     );
+  }
 
   const filtered = biodatas
     .filter((b) => (filters.type ? b.biodataType === filters.type : true))

@@ -49,8 +49,8 @@ const BiodataDetails = () => {
     }
   };
 
-  const handleRequestContact = () => {
-    navigate(`/checkout/${biodata._id}`);
+  const handleRequestContact = (id) => {
+    navigate(`/checkout/${id}`);
   };
 
   if (isLoading)
@@ -157,7 +157,7 @@ const BiodataDetails = () => {
 
         {role !== "premium" && (
           <button
-            onClick={handleRequestContact}
+            onClick={()=>handleRequestContact(biodata._id)}
             className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-black"
           >
             Request Contact Info

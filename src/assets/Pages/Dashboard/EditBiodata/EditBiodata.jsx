@@ -44,42 +44,42 @@ const EditBiodata = () => {
   const [biodataId, setBiodataId] = useState(null);
   const { user } = useContext(AuthContext);
 
- 
-
   const onSubmit = async (data) => {
     const confirm = await Swal.fire({
-      title: 'Confirm to Publish?',
+      title: "Confirm to Publish?",
       html: `
         <strong>${data.name}</strong><br/>
         Partner Age: ${data.expectedPartnerAge}<br/>
         Mobile: ${data.mobile}
       `,
-      icon: 'question',
+      icon: "question",
       showCancelButton: true,
-      confirmButtonText: 'Publish',
+      confirmButtonText: "Publish",
     });
 
     if (confirm.isConfirmed) {
       try {
-        const res = await axiosSecure.post('/biodatas', {
+        const res = await axiosSecure.post("/biodatas", {
           ...data,
           email: user.email,
           displayName: user.displayName,
-      creation_date: new Date().toISOString()
-
+          status: "non-premium",
+          creation_date: new Date().toISOString(),
         });
 
         if (res.data.success) {
-          Swal.fire('Success!', `Biodata created with ID: ${res.data.newId}`, 'success');
-        //   reset();
+          Swal.fire(
+            "Success!",
+            `Biodata created with ID: ${res.data.newId}`,
+            "success"
+          );
+          //   reset();
         }
       } catch (err) {
-        Swal.fire('Error', 'Failed to save biodata.', 'error');
+        Swal.fire("Error", "Failed to save biodata.", "error");
       }
     }
   };
-
-
 
   return (
     <div className="max-w-3xl mx-auto p-4 shadow-lg rounded-xl my-10">

@@ -11,6 +11,7 @@ import EditBiodata from "../Pages/Dashboard/EditBiodata/EditBiodata";
 import BiodatasPage from "../Pages/Biodatas/BiodatasPage";
 import BiodataDetails from "../Pages/Biodatas/BiodataDetails";
 import ViewBiodata from "../Pages/Dashboard/ViewBiodatas/ViewBiodata";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/biodata/:id",
-        Component: BiodataDetails,
+        element: (
+          <PrivateRoute>
+            <BiodataDetails></BiodataDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "checkout/:id",
+        element: (
+          <PrivateRoute>
+            <Payment></Payment>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/aboutUs",
@@ -54,16 +67,16 @@ const router = createBrowserRouter([
         <DashboardLayout></DashboardLayout>
       </PrivateRoute>
     ),
-    children:[
-        {
-            path:"editBiodata",
-            Component: EditBiodata,
-        },
-        {
-            path:"viewBiodata",
-            Component: ViewBiodata,
-        }
-    ]
+    children: [
+      {
+        path: "editBiodata",
+        Component: EditBiodata,
+      },
+      {
+        path: "viewBiodata",
+        Component: ViewBiodata,
+      },
+    ],
   },
 ]);
 
