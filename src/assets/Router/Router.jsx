@@ -12,6 +12,7 @@ import BiodatasPage from "../Pages/Biodatas/BiodatasPage";
 import BiodataDetails from "../Pages/Biodatas/BiodataDetails";
 import ViewBiodata from "../Pages/Dashboard/ViewBiodatas/ViewBiodata";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import FavouritesBiodata from "../Pages/Dashboard/Favorite/Favorite";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: "viewBiodata",
         Component: ViewBiodata,
+      },
+      {
+        path: "favourites",
+        Component: FavouritesBiodata,
       },
     ],
   },

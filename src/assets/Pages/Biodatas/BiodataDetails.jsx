@@ -14,6 +14,7 @@ const BiodataDetails = () => {
   const navigate = useNavigate();
   const { user, role } = useContext(AuthContext); // role: "normal" or "premium"
   const axios = useAxios();
+  const axiosSecure = useAxiosSecure();
 
   // Fetch current biodata
   const { data: biodata = {}, isLoading } = useQuery({
@@ -35,14 +36,19 @@ const BiodataDetails = () => {
     },
   });
 
-  const handleAddToFavourites = async () => {
+  const { displayName, permanentDivision, occupation } = biodata;
+
+  const handleAddToFavourites = async (id) => {
     try {
       const payload = {
-        userEmail: user.email,
-        biodataId: biodata._id,
-        addedAt: new Date(),
+        displayName: displayName,
+        BiodataId: id,
+        permanentDivision: permanentDivision,
+        occupation: occupation,
+        email: user.email,
+        added_at: new Date(),
       };
-      await axios.post("/favourites", payload);
+      await axiosSecure.post("/favourites", payload);
       Swal.fire("Success", "Added to Favourites", "success");
     } catch (err) {
       Swal.fire("Error", "Something went wrong", "error");
@@ -149,15 +155,15 @@ const BiodataDetails = () => {
 
       <div className="flex gap-4 mb-10">
         <button
-          onClick={handleAddToFavourites}
+          onClick={() => handleAddToFavourites(biodata.BiodataId)}
           className="bg-yellow-400 hover:bg-yellow-500 px-4 py-2 rounded text-black"
         >
           Add to Favourites
         </button>
 
-        {role !== "premium" && (
+        {biodata.status !== "premium" && (
           <button
-            onClick={()=>handleRequestContact(biodata._id)}
+            onClick={() => handleRequestContact(biodata._id)}
             className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-black"
           >
             Request Contact Info

@@ -5,14 +5,17 @@ import { AuthContext } from "../../../AuthContext/AuthContext";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useNavigate, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
+import useAxios from "../../../hooks/useAxios";
 
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
+  const axios = useAxios()
   const { user } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate()
 
   const { isPending, data: biodataInfo = {} } = useQuery({
     queryKey: ["biodatas", id],
@@ -82,7 +85,27 @@ const PaymentForm = () => {
       } else {
         setError("");
         if (result.paymentIntent.status === "succeeded") {
-          console.log("Payment succeeded!");
+          console.log("Payment succeeded!",result.paymentIntent.id);
+          const transactionId = result.paymentIntent.id;
+                    // step-4 mark parcel paid also create payment history
+                    const paymentData = {
+                        id,
+                        email: user.email,
+                        amountInCents,
+                        transactionId: transactionId,
+                        paymentMethod: result.paymentIntent.payment_method_types
+                    }
+                    const paymentRes = await axiosSecure.post('/payments', paymentData);
+                    if (paymentRes.data.insertedId) {
+
+                        // ✅ Show SweetAlert with transaction ID
+                        await Swal.fire({
+                            icon: 'success',
+                            title: 'Payment Successful!',
+                            html: `<strong>Transaction ID:</strong> <code>${transactionId}</code>`,
+                            confirmButtonText: 'Go to My Biodata',
+                        });}
+                        navigate("/allBiodata")
         }
       }
     }
