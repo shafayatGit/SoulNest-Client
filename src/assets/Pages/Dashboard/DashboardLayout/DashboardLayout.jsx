@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
-
-import { FaAddressBook, FaBars, FaEye, FaHeart, FaSignOutAlt, FaTimes, FaUserEdit } from 'react-icons/fa';
+import { HiOutlineUserAdd } from "react-icons/hi";
+import { FaAddressBook, FaBars, FaCrown, FaEye, FaHeart, FaSignOutAlt, FaTimes, FaUserEdit } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router';
 import { AuthContext } from '../../../AuthContext/AuthContext';
 
@@ -32,6 +32,9 @@ const DashboardLayout = () => {
           </span>
         </Link>
          <nav className="flex pl-5 pt-5 flex-col gap-4">
+          <NavLink to="adminDashboard" className={({isActive})=>isActive?"underline":"hover:underline"}>
+            <FaUserEdit className="inline mr-2" /> Admin Dashboard
+          </NavLink>
           <NavLink to="editBiodata" className={({isActive})=>isActive?"underline":"hover:underline"}>
             <FaUserEdit className="inline mr-2" /> Edit Biodata
           </NavLink>
@@ -45,10 +48,10 @@ const DashboardLayout = () => {
             <FaHeart className="inline mr-2" /> Favourites
           </NavLink>
           <NavLink to="approvePremium" className={({isActive})=>isActive?"underline":"hover:underline"}>
-            <FaHeart className="inline mr-2" /> Approved premium request 
+            <FaCrown className="inline mr-2" /> Approved premium request 
           </NavLink>
           <NavLink to="approvedContactRequest" className={({isActive})=>isActive?"underline":"hover:underline"}>
-            <FaHeart className="inline mr-2" /> Approved contact request 
+            <HiOutlineUserAdd className="inline mr-2" /> Approved contact request 
           </NavLink>
         </nav>
           <button

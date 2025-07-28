@@ -1,4 +1,4 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 // import useAxiosSecure from '../hooks/useAxiosSecure';
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
@@ -55,33 +55,38 @@ const ApproveContactRequests = () => {
     });
   };
 
-  if (isLoading) return <p className="text-center mt-10">Loading...</p>;
+  if (isLoading)
+    return (
+      <div className="w-full min-h-dvh flex justify-center items-center">
+        <span className="loading loading-dots loading-xl"></span>
+      </div>
+    );
 
   return (
     <div className="p-4 max-w-6xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4 text-center">
+      <h2 className="text-4xl font-bold mb-6 mt-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
         All Contact Requests
       </h2>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full border border-gray-300 text-sm md:text-base">
-          <thead className="bg-gray-100">
+        <table className="min-w-full border-2 border-[#8a6c42] text-sm md:text-base">
+          <thead className="bg-[#bda373]">
             <tr>
-              <th className="p-2 border">Name</th>
-              <th className="p-2 border">Biodata ID</th>
-              <th className="p-2 border">Requested By</th>
-              <th className="p-2 border">Status</th>
-              <th className="p-2 border">Action</th>
+              <th className="p-2 border border-[#8a6c42]">Name</th>
+              <th className="p-2 border border-[#8a6c42]">Biodata ID</th>
+              <th className="p-2 border border-[#8a6c42]">Requested By</th>
+              <th className="p-2 border border-[#8a6c42]">Status</th>
+              <th className="p-2 border border-[#8a6c42]">Action</th>
             </tr>
           </thead>
           <tbody>
             {requests.map((req) => (
               <tr key={req._id} className="text-center">
-                <td className="p-2 border">{req.displayName}</td>
-                <td className="p-2 border">{req.biodataId}</td>
-                <td className="p-2 border">{req.email}</td>
-                <td className="p-2 border capitalize">{req.status}</td>
-                <td className="p-2 border space-x-2">
+                <td className="p-2 border border-[#8a6c42]">{req.displayName}</td>
+                <td className="p-2 border border-[#8a6c42]">{req.biodataId}</td>
+                <td className="p-2 border border-[#8a6c42]">{req.email}</td>
+                <td className="p-2 border border-[#8a6c42] capitalize">{req.status}</td>
+                <td className="p-2 border border-[#8a6c42] space-x-2">
                   {req.status === "pending" && (
                     <button
                       onClick={() => handleApprove(req._id)}

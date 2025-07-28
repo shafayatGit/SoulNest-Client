@@ -5,10 +5,12 @@ import { Link, useLocation, useNavigate } from "react-router";
 import toast, { Toaster } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import Aos from "aos";
+import useAxios from "../../hooks/useAxios";
 
 const Registration = () => {
-  const { createUser,signInWithGoogle,user } = useContext(AuthContext);
-  console.log(user)
+  const axios = useAxios();
+  const { createUser, signInWithGoogle, user } = useContext(AuthContext);
+  // console.log(user);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -21,18 +23,28 @@ const Registration = () => {
   } = useForm();
 
   useEffect(() => {
-          Aos.init({
-            duration: 900, // animation duration
-            once: false, // only once per element
-            offset: 200, // offset (in px) from the original trigger point
-          });
-        }, [])
+    Aos.init({
+      duration: 900, // animation duration
+      once: false, // only once per element
+      offset: 200, // offset (in px) from the original trigger point
+    });
+  }, []);
 
   const onSubmit = (data) => {
     console.log("Registered User:", data);
     createUser(data.email, data.password)
       .then(async (result) => {
         toast.success(`Welcome, ${data.name}! 🎉`);
+        const userInfo = {
+          email: data.email,
+          name: data.name,
+          role: "user", // default role
+          created_at: new Date().toISOString(),
+          last_log_in: new Date().toISOString(),
+        };
+
+        const userRes = await axios.post("/users", userInfo);
+        console.log(userRes.data);
         navigate(from);
         // update userinfo in the database
       })
@@ -43,28 +55,45 @@ const Registration = () => {
     reset(); // clear form after submission
   };
 
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then(async (result) => {
+        const user = result.user;
+        toast.success(`Welcome, ${user.displayName}! 🎉`);
+        const userInfo = {
+          email: user.email,
+          name: user.name,
+          role: "user", // default role
+          created_at: new Date().toISOString(),
+          last_log_in: new Date().toISOString(),
+        };
 
-    const handleGoogleSignIn = () => {
-        signInWithGoogle()
-            .then(async (result) => {
-                toast.success(`Welcome, ${user.displayName}! 🎉`);
+        const userRes = await axios.post("/users", userInfo);
+        console.log(userRes.data);
         navigate(from);
 
-                navigate(from);
-            })
-            .catch(error => {
-                console.error(error);
-            })
-    }
+        navigate(from);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <div className="libre flex justify-center items-center min-h-screen bg-gray-50">
       <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl">
-        <h2 data-aos="fade-down" className="text-center mb-6 libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
+        <h2
+          data-aos="fade-down"
+          className="text-center mb-6 libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]"
+        >
           Create Account
         </h2>
 
-        <form data-aos="fade-up" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form
+          data-aos="fade-up"
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-4"
+        >
           {/* Name */}
           <div>
             <label className="block mb-1 font-medium">Name</label>
@@ -144,11 +173,12 @@ const Registration = () => {
             Register
           </button>
         </form>
-        
+
         {/* Divider */}
         <div className="divider my-4">OR</div>
         {/* Google Sign-In */}
-        <button data-aos="fade-down"
+        <button
+          data-aos="fade-down"
           onClick={handleGoogleSignIn}
           className=" w-full flex items-center justify-center gap-2"
         >

@@ -33,17 +33,19 @@ const ApprovedPremium = () => {
           refetch(); // Refetch the table
         }
       } catch (err) {
-        Swal.fire('Error', 'Something went wrong.', 'error');
+        Swal.fire('Error', 'Something went wrong.', 'error',err);
       }
     }
   };
 
   return (
     <div className="p-4 overflow-x-auto">
-      <h2 className="text-xl font-bold mb-4">Premium Approval Requests</h2>
+      <h2 className="text-4xl font-bold mb-6 mt-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">Premium Approval Requests</h2>
 
       {isLoading ? (
-        <p>Loading...</p>
+        <div className="w-full min-h-dvh flex justify-center items-center">
+        <span className="loading loading-dots loading-xl"></span>
+      </div>
       ) : (
         <table className="w-full table-auto border-collapse border border-gray-300 text-sm">
           <thead className="bg-gray-100">

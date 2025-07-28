@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../AuthContext/AuthContext";
 // import axiosSecure from '../../../hooks/useAxiosSecure';
 import useAxios from "../../../hooks/useAxios";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
@@ -12,7 +12,7 @@ const ViewBiodata = () => {
   const axios = useAxios();
   const axiosSecure = useAxiosSecure()
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const { data: myBiodatas = [], isPending } = useQuery({
     queryKey: ["myBiodatas", user?.email],

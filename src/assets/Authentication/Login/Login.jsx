@@ -5,9 +5,11 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import Aos from "aos";
+import useAxios from "../../hooks/useAxios";
 
 const Login = () => {
   const { signIn, signInWithGoogle, user } = useContext(AuthContext);
+  const axios = useAxios()
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from || "/";
@@ -39,7 +41,17 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then(async (result) => {
-        toast.success(`Welcome, ${user.displayName}! 🎉`);
+        const user = result.user;
+                toast.success(`Welcome, ${user.displayName}! 🎉`);
+                const userInfo = {
+                    email: user.email,
+                    name: user.name,
+                    role: 'user', // default role
+                    created_at: new Date().toISOString(),
+                    last_log_in: new Date().toISOString()
+                }
+
+                const userRes = await axios.post('/users', userInfo);
         navigate(from);
       })
       .catch((error) => {

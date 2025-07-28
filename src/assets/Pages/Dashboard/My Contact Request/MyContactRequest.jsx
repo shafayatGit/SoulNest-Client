@@ -1,4 +1,4 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { useContext } from 'react';
 // import { AuthContext } from '../context/AuthProvider';
 // import useAxiosSecure from '../hooks/useAxiosSecure'; // your secure axios instance
@@ -9,7 +9,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 const MyContactRequests = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
-  const queryClient = useQueryClient();
+//   const queryClient = useQueryClient();
 
   // ✅ Fetch user's contact requests
   const { data: requests = [], isLoading, refetch } = useQuery({
@@ -22,16 +22,16 @@ const MyContactRequests = () => {
   });
 
   // ✅ Delete mutation
-  const deleteMutation = useMutation({
-    mutationFn: async (id) => {
-      const res = await axiosSecure.delete(`/payments/${id}`);
-      return res.data;
-    },
-    onSuccess: () => {
-      Swal.fire('Deleted!', 'Contact request has been deleted.', 'success');
-      queryClient.invalidateQueries(['myContactRequests']);
-    },
-  });
+//   const deleteMutation = useMutation({
+//     mutationFn: async (id) => {
+//       const res = await axiosSecure.delete(`/payments/${id}`);
+//       return res.data;
+//     },
+//     onSuccess: () => {
+//       Swal.fire('Deleted!', 'Contact request has been deleted.', 'success');
+//       queryClient.invalidateQueries(['myContactRequests']);
+//     },
+//   });
 
  const handleDelete = async (id) => {
      const confirm = await Swal.fire({

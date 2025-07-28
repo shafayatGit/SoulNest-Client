@@ -51,7 +51,7 @@ const BiodataDetails = () => {
       await axiosSecure.post("/favourites", payload);
       Swal.fire("Success", "Added to Favourites", "success");
     } catch (err) {
-      Swal.fire("Error", "Something went wrong", "error");
+      Swal.fire("Error", "Something went wrong", "error", err);
     }
   };
 
@@ -61,25 +61,16 @@ const BiodataDetails = () => {
 
   if (isLoading)
     return (
-      <div class="spinner center">
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
-        <div class="spinner-blade"></div>
+      <div className="w-full min-h-dvh flex justify-center items-center">
+        <span className="loading loading-dots loading-xl"></span>
       </div>
     );
 
   return (
     <div className="nuni max-w-5xl mx-auto px-6 py-10">
-      <h1 className="text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">Biodata Details</h1>
+      <h1 className="text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
+        Biodata Details
+      </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <img
@@ -171,14 +162,19 @@ const BiodataDetails = () => {
         )}
       </div>
 
-      <h2 className="text-2xl text-center font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">Similar Biodatas</h2>
+      <h2 className="text-2xl text-center font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
+        Similar Biodatas
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {similarBiodatas.map((similar) => (
-          <div key={similar._id} className="border border-[#8a6c42] p-4 rounded-lg shadow">
+          <div
+            key={similar._id}
+            className="border border-[#8a6c42] shadow-lg shadow-[#8a6c42] p-4 rounded-lg "
+          >
             <img
               src={similar.profileImage}
               alt={similar.name}
-              className="w-full h-40 object-cover rounded"
+              className="w-full object-cover rounded"
             />
             <p>
               <strong>Name:</strong> {similar.name}

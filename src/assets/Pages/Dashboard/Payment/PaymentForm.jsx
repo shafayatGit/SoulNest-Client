@@ -5,14 +5,14 @@ import { AuthContext } from "../../../AuthContext/AuthContext";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useNavigate, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "../../../hooks/useAxios";
+// import useAxios from "../../../hooks/useAxios";
 
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
-  const axios = useAxios()
+//   const axios = useAxios()
   const { user } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate()

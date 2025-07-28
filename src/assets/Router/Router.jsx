@@ -16,6 +16,8 @@ import FavouritesBiodata from "../Pages/Dashboard/Favorite/Favorite";
 import MyContactRequest from "../Pages/Dashboard/My Contact Request/MyContactRequest";
 import ApproveContactRequests from "../Pages/Dashboard/Admin/ApproveContactRequest/ApproveContactRequest";
 import ApprovedPremium from "../Pages/Dashboard/Admin/ApprovePremium/ApprovePremium";
+import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard/AdminDashboard";
+import MakeAdmin from "../Pages/Dashboard/Admin/MakeAdmin/MakeAdmin";
 
 const router = createBrowserRouter([
   {
@@ -72,6 +74,14 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        path: "adminDashboard",
+        Component: AdminDashboard,
+      },
+      {
+        path: "makeAdmin",
+        Component: MakeAdmin,
+      },
       {
         path: "editBiodata",
         Component: EditBiodata,

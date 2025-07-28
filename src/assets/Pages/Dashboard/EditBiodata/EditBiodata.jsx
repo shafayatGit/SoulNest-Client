@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-import { useContext, useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
+import { useContext } from "react";
+// import { toast } from "react-hot-toast";
 // import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { AuthContext } from "../../../AuthContext/AuthContext";
 // import useAxios from "../../../hooks/useAxios";
@@ -41,7 +41,7 @@ const races = ["Fair", "Medium", "Dark"];
 const EditBiodata = () => {
   const { register, handleSubmit, reset } = useForm();
   const axiosSecure = useAxiosSecure();
-  const [biodataId, setBiodataId] = useState(null);
+  // const [biodataId, setBiodataId] = useState(null);
   const { user } = useContext(AuthContext);
 
   const onSubmit = async (data) => {
@@ -73,10 +73,10 @@ const EditBiodata = () => {
             `Biodata created with ID: ${res.data.newId}`,
             "success"
           );
-          //   reset();
+            reset();
         }
       } catch (err) {
-        Swal.fire("Error", "Failed to save biodata.", "error");
+        Swal.fire("Error", "Failed to save biodata.", "error",err);
       }
     }
   };
