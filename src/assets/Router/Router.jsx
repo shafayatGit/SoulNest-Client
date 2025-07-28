@@ -13,6 +13,9 @@ import BiodataDetails from "../Pages/Biodatas/BiodataDetails";
 import ViewBiodata from "../Pages/Dashboard/ViewBiodatas/ViewBiodata";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import FavouritesBiodata from "../Pages/Dashboard/Favorite/Favorite";
+import MyContactRequest from "../Pages/Dashboard/My Contact Request/MyContactRequest";
+import ApproveContactRequests from "../Pages/Dashboard/Admin/ApproveContactRequest/ApproveContactRequest";
+import ApprovedPremium from "../Pages/Dashboard/Admin/ApprovePremium/ApprovePremium";
 
 const router = createBrowserRouter([
   {
@@ -78,8 +81,20 @@ const router = createBrowserRouter([
         Component: ViewBiodata,
       },
       {
+        path: "myContactRequest",
+        Component: MyContactRequest,
+      },
+      {
         path: "favourites",
         Component: FavouritesBiodata,
+      },
+      {
+        path: "approvePremium",
+        Component: ApprovedPremium,
+      },
+      {
+        path: "approvedContactRequest",
+        Component: ApproveContactRequests,
       },
     ],
   },

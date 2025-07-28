@@ -5,9 +5,12 @@ import { AuthContext } from "../../../AuthContext/AuthContext";
 // import axiosSecure from '../../../hooks/useAxiosSecure';
 import useAxios from "../../../hooks/useAxios";
 import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ViewBiodata = () => {
   const axios = useAxios();
+  const axiosSecure = useAxiosSecure()
   const { user } = useContext(AuthContext);
   const navigate = useNavigate()
 
@@ -30,33 +33,39 @@ const ViewBiodata = () => {
 
   
 
-  //   const handleMakePremium = () => {
-  //     Swal.fire({
-  //       title: 'Make Premium?',
-  //       text: 'Are you sure you want to request premium status for your biodata?',
-  //       icon: 'question',
-  //       showCancelButton: true,
-  //       confirmButtonText: 'Yes, request it!',
-  //     }).then(async (result) => {
-  //       if (result.isConfirmed) {
-  //         await axiosSecure.post(`/api/biodata/premium-request/${biodata.BiodataId}`);
-  //         refetch();
-  //         Swal.fire('Requested!', 'Your biodata has been sent for premium approval.', 'success');
-  //       }
-  //     });
-  //   };
+  const handleMakePremium = (biodataId) => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "Do you want to request to make your biodata premium?",
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, request it!',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axiosSecure.patch(`/biodatas/request-premium/${biodataId}`)
+        .then(res => {
+          if (res.data.success) {
+            Swal.fire('Requested!', 'Your request has been sent to admin.', 'success');
+          } else {
+            Swal.fire('Oops!',"Something is wrong or you have requested once!");
+          }
+        });
+    }
+  });
+};
 
   return (
     <div className="max-w-4xl mx-auto p-4">
+      <h1 className="text-4xl text-center mb-5 font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">View Biodata</h1>
       {myBiodatas.map((biodata) => (
-        <div className="border rounded p-4 shadow">
+        <div className="border border-[#8a6c42] mb-5 rounded p-4 shadow">
           <img
             src={biodata.profileImage}
             alt="Profile"
             className="w-32 h-32 rounded-full mx-auto"
           />
           <h2 className="text-2xl text-center font-bold my-2">
-            {biodata.name}
+            {biodata.displayName}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             <p>
@@ -111,7 +120,7 @@ const ViewBiodata = () => {
 
             <div className="text-center mt-6">
               <button
-                  // onClick={()=>handlePayment(biodata._id)}
+                  onClick={()=>handleMakePremium(biodata._id)}
                 className="bg-purple-600 hover:bg-purple-700 text-black py-2 px-6 rounded"
               >
                 Make Biodata to Premium

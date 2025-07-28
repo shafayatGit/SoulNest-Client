@@ -79,7 +79,7 @@ const BiodataDetails = () => {
 
   return (
     <div className="nuni max-w-5xl mx-auto px-6 py-10">
-      <h1 className="text-2xl font-bold mb-6">Biodata Details</h1>
+      <h1 className="text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">Biodata Details</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <img
@@ -89,7 +89,7 @@ const BiodataDetails = () => {
         />
         <div>
           <p>
-            <strong>Name:</strong> {biodata.name}
+            <strong>Name:</strong> {biodata.displayName}
           </p>
           <p>
             <strong>Biodata Type:</strong> {biodata.biodataType}
@@ -161,7 +161,7 @@ const BiodataDetails = () => {
           Add to Favourites
         </button>
 
-        {biodata.status !== "premium" && (
+        {biodata.status !== "approved" && (
           <button
             onClick={() => handleRequestContact(biodata._id)}
             className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-black"
@@ -171,10 +171,10 @@ const BiodataDetails = () => {
         )}
       </div>
 
-      <h2 className="text-xl font-semibold mb-4">Similar Biodatas</h2>
+      <h2 className="text-2xl text-center font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">Similar Biodatas</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {similarBiodatas.map((similar) => (
-          <div key={similar._id} className="border p-4 rounded-lg shadow">
+          <div key={similar._id} className="border border-[#8a6c42] p-4 rounded-lg shadow">
             <img
               src={similar.profileImage}
               alt={similar.name}

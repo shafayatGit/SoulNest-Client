@@ -24,7 +24,7 @@ const PaymentForm = () => {
       return res.data;
     },
   });
-
+//  console.log(biodataInfo.displayName)
   if (isPending) {
     return (
       <div className="w-full min-h-dvh flex justify-center items-center">
@@ -89,9 +89,13 @@ const PaymentForm = () => {
           const transactionId = result.paymentIntent.id;
                     // step-4 mark parcel paid also create payment history
                     const paymentData = {
+                        displayName: biodataInfo.displayName,
+                        mobileNumber: biodataInfo.mobileNumber,
+                        biodataId: biodataInfo.BiodataId,
                         id,
                         email: user.email,
                         amountInCents,
+                        status: "pending",
                         transactionId: transactionId,
                         paymentMethod: result.paymentIntent.payment_method_types
                     }

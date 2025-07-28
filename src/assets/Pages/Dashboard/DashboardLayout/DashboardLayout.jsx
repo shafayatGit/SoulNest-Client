@@ -21,13 +21,13 @@ const DashboardLayout = () => {
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
-         <Link to="/" className="md:flex hidden items-center space-x-2">
+         <Link to="/" className="md:flex hidden ml-3 items-center space-x-2">
           <img
             src="https://i.ibb.co/bMHW9r5z/Logo.png"
             alt="Logo"
             className="h-12 w-12"
           />
-          <span className="tracking-wider libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
+          <span className="tracking-wider libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#9f8662]">
             SoulNest
           </span>
         </Link>
@@ -38,11 +38,17 @@ const DashboardLayout = () => {
           <NavLink to="viewBiodata" className={({isActive})=>isActive?"underline":"hover:underline"}>
             <FaEye className="inline mr-2" /> View Biodata
           </NavLink>
-          <NavLink to="contacts" className={({isActive})=>isActive?"underline":"hover:underline"}>
+          <NavLink to="myContactRequest" className={({isActive})=>isActive?"underline":"hover:underline"}>
             <FaAddressBook className="inline mr-2" /> My Contact Request
           </NavLink>
           <NavLink to="favourites" className={({isActive})=>isActive?"underline":"hover:underline"}>
             <FaHeart className="inline mr-2" /> Favourites
+          </NavLink>
+          <NavLink to="approvePremium" className={({isActive})=>isActive?"underline":"hover:underline"}>
+            <FaHeart className="inline mr-2" /> Approved premium request 
+          </NavLink>
+          <NavLink to="approvedContactRequest" className={({isActive})=>isActive?"underline":"hover:underline"}>
+            <FaHeart className="inline mr-2" /> Approved contact request 
           </NavLink>
         </nav>
           <button

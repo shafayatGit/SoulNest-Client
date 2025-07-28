@@ -66,9 +66,14 @@ const Banner = () => {
               <p className="text-xl text-[#9c974d] md:text-xl max-w-2xl">
                 {slide.subtitle}
               </p>
-              <Link to={"/register"}>
-                <button className="text-[#8a6c42] text-xl mt-6">Register</button>
+              <div className="flex gap-5">
+                <Link to={"/aboutUs"}>
+                <button className="text-[#8a6c42] text-xl mt-6">About Us</button>
               </Link>
+              <Link to={"/contactUs"}>
+                <button className="text-[#8a6c42] text-xl mt-6">Contact</button>
+              </Link>
+              </div>
             </div>
           </div>
         ))}
