@@ -53,6 +53,28 @@ const MakeAdmin = () => {
     }
   };
 
+  const handleMakePremium = async (biodataId) => {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: 'Make this user premium?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, approve',
+    });
+
+    if (result.isConfirmed) {
+      try {
+        const res = await useAxiosSecure.patch(`/biodatas/approve-premium/${biodataId}`);
+        if (res.data?.success) {
+          Swal.fire('Success!', 'User is now premium.', 'success');
+          refetch(); // Refetch the table
+        }
+      } catch (err) {
+        Swal.fire('Error', 'Something went wrong.', 'error',err);
+      }
+    }
+  };
+
   return (
     <div className="p-6">
       <h2 className="text-2xl font-semibold mb-4">Make Admin</h2>
@@ -118,7 +140,7 @@ const MakeAdmin = () => {
                         </>
                       )}
                     </button>
-                    <button
+                    <button onClick={() => handleMakePremium(users._id)}
                       className={`btn btn-sm text-black ${
                         u.role === "admin" ? "btn-error" : "btn-primary"
                       }`}
