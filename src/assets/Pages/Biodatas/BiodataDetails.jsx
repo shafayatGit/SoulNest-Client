@@ -197,7 +197,7 @@ const BiodataDetails = () => {
       </div>
 
       <h2 data-aos="fade-up" className="text-2xl text-center font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
-        Similar Biodatas
+        Similar Biodata
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {similarBiodatas.map((similar) => (

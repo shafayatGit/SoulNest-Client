@@ -60,7 +60,7 @@ const Navbar = () => {
             }
             to="/allBiodata"
           >
-            Biodatas
+            Biodata
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -152,7 +152,7 @@ const Navbar = () => {
             }
             to="/allBiodata"
           >
-            Biodatas
+            Biodata
           </NavLink>
           <NavLink
             className={({ isActive }) =>

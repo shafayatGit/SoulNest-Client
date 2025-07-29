@@ -14,7 +14,10 @@ const Footer = () => {
     });
   }, []);
   return (
-    <footer data-aos="fade-right" className="nuni bg-gradient-to-r from-[#8a6c42] via-[#8a7457] to-[#8f816d] text-white mt-16">
+    <footer
+      data-aos="fade-right"
+      className="nuni bg-gradient-to-r from-[#8a6c42] via-[#8a7457] to-[#8f816d] text-white mt-16"
+    >
       <div className="max-w-7xl mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo & Name */}
         <div>
@@ -46,22 +49,22 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="/biodatas" className="hover:text-[#bda373]">
-                Biodatas
+              <Link to="/allBiodata" className="hover:text-[#bda373]">
+                Biodata
+              </Link>
+            </li>
+            <li>
+              <Link to="/aboutUs" className="hover:text-[#bda373]">
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link to="/contactUs" className="hover:text-[#bda373]">
+                Contact Us
               </Link>
             </li>
             {user && (
               <>
-                <li>
-                  <Link to="/about" className="hover:text-[#bda373]">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="hover:text-[#bda373]">
-                    Contact Us
-                  </Link>
-                </li>
                 <li>
                   <Link to="/dashboard" className="hover:text-[#bda373]">
                     DashBoard
