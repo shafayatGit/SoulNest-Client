@@ -41,6 +41,7 @@ const MakeAdmin = () => {
       confirmButtonText: "Yes",
       cancelButtonText: "Cancel",
     });
+    
 
     if (!confirm.isConfirmed) return;
 
@@ -53,31 +54,24 @@ const MakeAdmin = () => {
     }
   };
 
-  const handleMakePremium = async (biodataId) => {
-    const result = await Swal.fire({
-      title: 'Are you sure?',
-      text: 'Make this user premium?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, approve',
-    });
 
-    if (result.isConfirmed) {
+  const handleMakePremium = async (id) => {
       try {
-        const res = await useAxiosSecure.patch(`/biodatas/approve-premium/${biodataId}`);
-        if (res.data?.success) {
-          Swal.fire('Success!', 'User is now premium.', 'success');
-          refetch(); // Refetch the table
+        const { data } = await axiosSecure.patch(`/users/approve-premium/${id}`);
+        if (data.success) {
+          Swal.fire("Success", data.message, "success");
+          refetch();
+        } else {
+          Swal.fire("Failed", data.message, "error");
         }
-      } catch (err) {
-        Swal.fire('Error', 'Something went wrong.', 'error',err);
+      } catch (error) {
+        Swal.fire("Error", "Something went wrong", "error");
       }
-    }
-  };
+    };
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">Make Admin</h2>
+      <h2 className="text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">Make Admin</h2>
 
       <div className="flex gap-2 mb-6 items-center">
         <FaSearch />
@@ -140,7 +134,7 @@ const MakeAdmin = () => {
                         </>
                       )}
                     </button>
-                    <button onClick={() => handleMakePremium(users._id)}
+                    <button onClick={() => handleMakePremium(u._id)}
                       className={`btn btn-sm text-black ${
                         u.role === "admin" ? "btn-error" : "btn-primary"
                       }`}

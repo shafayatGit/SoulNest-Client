@@ -63,7 +63,6 @@ const EditBiodata = () => {
           ...data,
           email: user.email,
           displayName: user.displayName,
-          status: "non-premium",
           creation_date: new Date().toISOString(),
         });
 

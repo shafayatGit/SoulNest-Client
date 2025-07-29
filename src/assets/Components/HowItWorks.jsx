@@ -51,7 +51,7 @@ const HowItWorks = () => {
         {steps.map((step, index) => (
           <div data-aos="fade-up"
             key={index}
-            className="border-[#908549] border-2 p-6 rounded-xl shadow-md hover:shadow-lg transition"
+            className="border-[#8a6c42] border-2 p-6 rounded-xl shadow-md hover:shadow-lg transition"
           >
             <div className="mb-4">{step.icon}</div>
             <h3 className="text-2xl font-semibold  mb-2">{step.title}</h3>

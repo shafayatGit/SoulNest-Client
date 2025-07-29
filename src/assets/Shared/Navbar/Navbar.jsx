@@ -7,13 +7,13 @@ import Aos from "aos";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-   useEffect(() => {
-      Aos.init({
-        duration: 900, // animation duration
-        once: false, // only once per element
-        offset: 200, // offset (in px) from the original trigger point
-      });
-    }, []);
+  useEffect(() => {
+    Aos.init({
+      duration: 900, // animation duration
+      once: false, // only once per element
+      offset: 200, // offset (in px) from the original trigger point
+    });
+  }, []);
 
   const handleLogOut = () => {
     logOut()
@@ -62,28 +62,28 @@ const Navbar = () => {
           >
             Biodatas
           </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
+                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
+            }
+            to="/aboutUs"
+          >
+            About Us
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
+                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
+            }
+            to="/contactUs"
+          >
+            Contact Us
+          </NavLink>
           {user && (
             <>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                    : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
-                }
-                to="/aboutUs"
-              >
-                About Us
-              </NavLink>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                    : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
-                }
-                to="/contactUs"
-              >
-                Contact Us
-              </NavLink>
               <NavLink
                 className={({ isActive }) =>
                   isActive
@@ -130,7 +130,10 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div data-aos="fade-down" className="md:hidden bg-black/30 bg-opacity-40  shadow-md px-6 py-4 space-y-8 absolute flex flex-col text-center w-full z-[1000]">
+        <div
+          data-aos="fade-down"
+          className="md:hidden bg-black/30 bg-opacity-40  shadow-md px-6 py-4 space-y-8 absolute flex flex-col text-center w-full z-[1000]"
+        >
           <NavLink
             className={({ isActive }) =>
               isActive
@@ -171,16 +174,20 @@ const Navbar = () => {
           >
             Contact Us
           </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"
-            }
-            to="/dashboard"
-          >
-            Dashboard
-          </NavLink>
+          {user && (
+            <>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
+                    : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
+                }
+                to="/dashboard"
+              >
+                Dashboard
+              </NavLink>
+            </>
+          )}
 
           <div>
             {user ? (

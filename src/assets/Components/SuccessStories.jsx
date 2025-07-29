@@ -62,7 +62,7 @@ const SuccessStories = () => {
         {sortedStories.map((story) => (
           <div data-aos="fade-up"
             key={story.id}
-            className="border-2 border-[#bda373] p-6 rounded-xl shadow hover:shadow-lg transition"
+            className="border-2 border-[#8a6c42] p-6 rounded-xl shadow hover:shadow-lg transition"
           
           >
             <img

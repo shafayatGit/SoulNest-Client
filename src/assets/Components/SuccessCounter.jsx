@@ -52,7 +52,7 @@ const SuccessCounter = () => {
         {stats.map((item, index) => (
           <div data-aos="fade-up"
             key={index}
-            className="border-2 border-[#bda373] rounded-xl shadow-md p-6 hover:shadow-xl transition"
+            className="border-2 border-[#8a6c42] rounded-xl shadow-md p-6 hover:shadow-xl transition"
           >
             <div className="mb-3">{item.icon}</div>
             <h3 className="text-3xl font-bold ">
