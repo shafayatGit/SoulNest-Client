@@ -2,11 +2,11 @@ import axios from 'axios';
 import React from 'react';
 
 const axiosSecure = axios.create({
-    baseURL: `http://localhost:3000`
+    baseURL: `https://assignment-12-serverside.vercel.app/`
 });
 
 const useAxiosSecure = () => {
     return axiosSecure;
 };
 
-export default useAxiosSecure;  
+export default useAxiosSecure;
