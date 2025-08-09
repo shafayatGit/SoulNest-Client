@@ -18,11 +18,13 @@ import ApproveContactRequests from "../Pages/Dashboard/Admin/ApproveContactReque
 import ApprovedPremium from "../Pages/Dashboard/Admin/ApprovePremium/ApprovePremium";
 import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard/AdminDashboard";
 import MakeAdmin from "../Pages/Dashboard/Admin/MakeAdmin/MakeAdmin";
+import ErrorCard from "../Components/ErrorCard";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    errorElement:<ErrorCard></ErrorCard>,
     children: [
       {
         path: "/",

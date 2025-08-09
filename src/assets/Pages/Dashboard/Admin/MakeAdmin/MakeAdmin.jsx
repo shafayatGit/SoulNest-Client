@@ -41,7 +41,6 @@ const MakeAdmin = () => {
       confirmButtonText: "Yes",
       cancelButtonText: "Cancel",
     });
-    
 
     if (!confirm.isConfirmed) return;
 
@@ -54,24 +53,25 @@ const MakeAdmin = () => {
     }
   };
 
-
   const handleMakePremium = async (id) => {
-      try {
-        const { data } = await axiosSecure.patch(`/users/approve-premium/${id}`);
-        if (data.success) {
-          Swal.fire("Success", data.message, "success");
-          refetch();
-        } else {
-          Swal.fire("Failed", data.message, "error");
-        }
-      } catch (error) {
-        Swal.fire("Error", "Something went wrong", "error");
+    try {
+      const { data } = await axiosSecure.patch(`/users/approve-premium/${id}`);
+      if (data.success) {
+        Swal.fire("Success", data.message, "success");
+        refetch();
+      } else {
+        Swal.fire("Failed", data.message, "error");
       }
-    };
+    } catch (error) {
+      Swal.fire("Error", "Something went wrong", "error");
+    }
+  };
 
   return (
     <div className="p-6">
-      <h2 className="text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">Make Admin</h2>
+      <h2 className="text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
+        Make Admin
+      </h2>
 
       <div className="flex gap-2 mb-6 items-center">
         <FaSearch />
@@ -84,7 +84,11 @@ const MakeAdmin = () => {
         />
       </div>
 
-      {isFetching && <p>Loading users...</p>}
+      {isFetching && (
+        <div className=" max-w-6xl mx-auto w-full h-dvh flex justify-center items-center">
+          <div class="loader"></div>
+        </div>
+      )}
 
       {!isFetching && users.length === 0 && emailQuery && (
         <p className="text-gray-500">No users found.</p>
@@ -103,7 +107,7 @@ const MakeAdmin = () => {
             </thead>
             <tbody>
               {users.map((u) => (
-                <tr  key={u._id}>
+                <tr key={u._id}>
                   <td>{u.email}</td>
                   <td>{u.name}</td>
                   <td>
@@ -134,7 +138,8 @@ const MakeAdmin = () => {
                         </>
                       )}
                     </button>
-                    <button onClick={() => handleMakePremium(u._id)}
+                    <button
+                      onClick={() => handleMakePremium(u._id)}
                       className={`btn btn-sm text-black ${
                         u.role === "admin" ? "btn-error" : "btn-primary"
                       }`}

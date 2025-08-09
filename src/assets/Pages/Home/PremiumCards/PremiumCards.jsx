@@ -23,7 +23,12 @@ const PremiumCards = () => {
     }
   });
 
-  if (isLoading) return <p className="text-center py-10">Loading...</p>;
+  if (isLoading)
+    return (
+      <div className=" max-w-6xl mx-auto w-full h-dvh flex justify-center items-center">
+          <div class="loader"></div>
+        </div>
+    );
 
   return (
     <section className="py-10 mt-20 max-w-8xl mx-auto px-4 md:px-12 bg-[#f7f5f3]">

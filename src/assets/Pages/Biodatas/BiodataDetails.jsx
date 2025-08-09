@@ -79,9 +79,9 @@ const BiodataDetails = () => {
 
   if (isLoading)
     return (
-      <div className="w-full min-h-dvh flex justify-center items-center">
-        <span className="loading loading-dots loading-xl"></span>
-      </div>
+      <div className=" max-w-6xl mx-auto w-full h-dvh flex justify-center items-center">
+          <div class="loader"></div>
+        </div>
     );
 
   return (

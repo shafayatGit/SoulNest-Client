@@ -1,19 +1,23 @@
-import { useQuery } from '@tanstack/react-query';
-import { useContext } from 'react';
+import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
 // import { AuthContext } from '../context/AuthProvider';
 // import useAxiosSecure from '../hooks/useAxiosSecure'; // your secure axios instance
-import Swal from 'sweetalert2';
-import { AuthContext } from '../../../AuthContext/AuthContext';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Swal from "sweetalert2";
+import { AuthContext } from "../../../AuthContext/AuthContext";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyContactRequests = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
-//   const queryClient = useQueryClient();
+  //   const queryClient = useQueryClient();
 
   // ✅ Fetch user's contact requests
-  const { data: requests = [], isLoading, refetch } = useQuery({
-    queryKey: ['myContactRequests', user?.email],
+  const {
+    data: requests = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["myContactRequests", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/payments?email=${user?.email}`);
       return res.data;
@@ -22,38 +26,45 @@ const MyContactRequests = () => {
   });
 
   // ✅ Delete mutation
-//   const deleteMutation = useMutation({
-//     mutationFn: async (id) => {
-//       const res = await axiosSecure.delete(`/payments/${id}`);
-//       return res.data;
-//     },
-//     onSuccess: () => {
-//       Swal.fire('Deleted!', 'Contact request has been deleted.', 'success');
-//       queryClient.invalidateQueries(['myContactRequests']);
-//     },
-//   });
+  //   const deleteMutation = useMutation({
+  //     mutationFn: async (id) => {
+  //       const res = await axiosSecure.delete(`/payments/${id}`);
+  //       return res.data;
+  //     },
+  //     onSuccess: () => {
+  //       Swal.fire('Deleted!', 'Contact request has been deleted.', 'success');
+  //       queryClient.invalidateQueries(['myContactRequests']);
+  //     },
+  //   });
 
- const handleDelete = async (id) => {
-     const confirm = await Swal.fire({
-       title: "Are you sure?",
-       text: "You want to remove this from contact request?",
-       icon: "warning",
-       showCancelButton: true,
-       confirmButtonText: "Yes, delete it!",
-     });
- 
-     if (confirm.isConfirmed) {
-       await axiosSecure.delete(`/payments/${id}`);
-       refetch();
-       Swal.fire("Deleted!", "Removed from payments.", "success");
-     }
-   };
+  const handleDelete = async (id) => {
+    const confirm = await Swal.fire({
+      title: "Are you sure?",
+      text: "You want to remove this from contact request?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+    });
 
-  if (isLoading) return <p className="text-center mt-10">Loading...</p>;
+    if (confirm.isConfirmed) {
+      await axiosSecure.delete(`/payments/${id}`);
+      refetch();
+      Swal.fire("Deleted!", "Removed from payments.", "success");
+    }
+  };
+
+  if (isLoading)
+    return (
+      <div className=" max-w-6xl mx-auto w-full h-dvh flex justify-center items-center">
+        <div class="loader"></div>
+      </div>
+    );
 
   return (
     <div className="p-4 max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">My Contact Requests</h2>
+      <h2 className="text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
+        My Contact Requests
+      </h2>
 
       <div className="overflow-x-auto">
         <table className="min-w-full border border-[#8a6c42]text-sm md:text-base">
@@ -74,10 +85,12 @@ const MyContactRequests = () => {
                 <td className="p-2 border">{req.biodataId}</td>
                 <td className="p-2 border capitalize">{req.status}</td>
                 <td className="p-2 border">
-                  {req.status === 'approved' ? req.mobileNumber || 'N/A' : 'Hidden'}
+                  {req.status === "approved"
+                    ? req.mobileNumber || "N/A"
+                    : "Hidden"}
                 </td>
                 <td className="p-2 border">
-                  {req.status === 'approved' ? req.email || 'N/A' : 'Hidden'}
+                  {req.status === "approved" ? req.email || "N/A" : "Hidden"}
                 </td>
                 <td className="p-2 border">
                   <button
