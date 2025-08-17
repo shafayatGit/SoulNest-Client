@@ -31,7 +31,7 @@ const PremiumCards = () => {
     );
 
   return (
-    <section className="py-10 mt-20 max-w-8xl mx-auto px-4 md:px-12 bg-[#f7f5f3]">
+    <section className="py-10 mt-20 max-w-8xl mx-auto px-4 md:px-12">
       <h2 data-aos="fade-up" className="text-4xl text-center mt-10 font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42] mb-8 flex justify-center items-center gap-3 drop-shadow-lg shadow-[#8a6c42]">
         <FaStar className="text-[#8a6c42] text-center font-bold bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42] text-4xl" />
         <span className="text-shadow ext-4xl text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">Premium Members</span>

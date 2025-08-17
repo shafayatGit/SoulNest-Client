@@ -85,7 +85,7 @@ const BiodataDetails = () => {
     );
 
   return (
-    <div className="nuni max-w-5xl mx-auto px-6 py-10">
+    <div className="mt-24 nuni max-w-5xl mx-auto px-6 py-10">
       <h1 data-aos="fade-up" className="text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
         Biodata Details
       </h1>

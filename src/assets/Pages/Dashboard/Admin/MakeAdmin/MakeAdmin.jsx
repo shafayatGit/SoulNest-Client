@@ -77,7 +77,7 @@ const MakeAdmin = () => {
         <FaSearch />
         <input
           type="text"
-          className="input input-bordered w-full max-w-md"
+          className="input border-[#8a6c42] input-bordered w-full max-w-md"
           placeholder="Search user by email"
           value={emailQuery}
           onChange={(e) => setEmailQuery(e.target.value)}
@@ -96,7 +96,7 @@ const MakeAdmin = () => {
 
       {users.length > 0 && (
         <div className="overflow-x-auto">
-          <table className="table w-full text-center table-zebra">
+          <table className="table  w-full text-center table-zebra">
             <thead>
               <tr>
                 <th>Email</th>

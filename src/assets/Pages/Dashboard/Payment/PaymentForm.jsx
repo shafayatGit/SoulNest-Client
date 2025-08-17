@@ -116,10 +116,10 @@ const PaymentForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto my-10 bg-white p-6 rounded-lg shadow">
-      <h2 className="text-xl font-bold mb-4 text-center">
+    <div className="mt-24 max-w-xl mx-auto my-10 bg-white p-6 rounded-lg shadow">
+      <h1 data-aos="fade-up" className="text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
         Request Contact Information
-      </h2>
+      </h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="font-medium">Biodata ID</label>

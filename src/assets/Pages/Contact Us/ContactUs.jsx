@@ -21,13 +21,13 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-16">
+    <section className="mt-24 max-w-6xl mx-auto px-4 py-16">
       <h2 data-aos="fade-down" className="text-3xl md:text-4xl font-bold text-center mb-10 ">📞 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">Contact Us</span></h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         
         {/* Left: Contact Info */}
-        <div data-aos="fade-left" className="space-y-6 text-lg text-gray-700">
+        <div data-aos="fade-left" className="space-y-6 text-lg ">
           <div className="flex items-start gap-4">
             <FaPhone className="text-[#8a6c42] text-2xl" />
             <div>
@@ -52,7 +52,7 @@ const ContactUs = () => {
         </div>
 
         {/* Right: Contact Form */}
-        <form data-aos="fade-right" onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-white shadow-md p-8 rounded-xl">
+        <form data-aos="fade-right" onSubmit={handleSubmit(onSubmit)} className="space-y-6  shadow-md p-8 rounded-xl">
           <div>
             <label className="block font-semibold mb-1">Full Name</label>
             <input

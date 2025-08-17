@@ -4,6 +4,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import Aos from "aos";
+import ThemeToggle from "../../Components/ThemeToggle/ThemeToggle";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -26,22 +27,25 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className=" shadow-md w-full z-[1000]">
+    <nav className="fixed top-0 shadow-md backdrop-blur-md transition-all duration-300 transform w-full z-[1000]">
       <div className=" px-4 py-3 flex justify-between items-center">
         {/* Logo and Website Name */}
-        <Link to="/" className="flex items-center space-x-2">
-          <img
-            src="https://i.ibb.co/bMHW9r5z/Logo.png"
-            alt="Logo"
-            className="h-12 w-12"
-          />
-          <span className="tracking-wider libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
-            SoulNest
-          </span>
-        </Link>
+        <div className="flex gap-4">
+          <Link to="/" className="flex items-center space-x-2">
+            <img
+              src="https://i.ibb.co/bMHW9r5z/Logo.png"
+              alt="Logo"
+              className="h-12 w-12"
+            />
+            <span className="tracking-wider libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
+              SoulNest
+            </span>
+          </Link>
+          <ThemeToggle></ThemeToggle>
+        </div>
 
         {/* Desktop Menu */}
-        <div className="nuni hidden font-medium tracking-wider md:flex text-lg space-x-6">
+        <div className="nuni text-[#8a6c42] hidden font-medium tracking-wider md:flex text-lg space-x-6">
           <NavLink
             className={({ isActive }) =>
               isActive
@@ -98,7 +102,7 @@ const Navbar = () => {
           )}
         </div>
 
-        <div className="hidden nuni md:block">
+        <div className="hidden text-[#8a6c42] nuni md:block">
           {user ? (
             <>
               <NavLink onClick={handleLogOut} className="">
@@ -148,7 +152,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"
+                : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[#8a6c42]"
             }
             to="/allBiodata"
           >
@@ -158,7 +162,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"
+                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[#8a6c42]"
             }
             to="/aboutUs"
           >
@@ -168,7 +172,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"
+                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[#8a6c42]"
             }
             to="/contactUs"
           >
@@ -180,7 +184,7 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive
                     ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                    : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"
+                    : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[#8a6c42]"
                 }
                 to="/dashboard"
               >
@@ -197,7 +201,7 @@ const Navbar = () => {
                 </NavLink>
               </>
             ) : (
-              <div className="flex flex-col gap-5">
+              <div className="flex text-[#8a6c42] flex-col gap-5">
                 <NavLink
                   className={({ isActive }) => (isActive ? "" : "")}
                   to="/login"

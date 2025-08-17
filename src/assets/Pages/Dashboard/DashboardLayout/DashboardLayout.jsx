@@ -27,7 +27,7 @@ const DashboardLayout = () => {
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen ">
       {/* Sidebar */}
       <div
         className={`fixed lg:relative z-50 pt-10 lg:z-0 top-0 left-0 h-full w-64 bg-gradient-to-b from-[#8a6c42] to-[#453315] shadow-md transition-transform duration-300 transform ${
@@ -47,6 +47,14 @@ const DashboardLayout = () => {
         <nav className="flex pl-5 pt-5 flex-col gap-4">
           {!roleLoading && role === "user" && (
             <>
+              <NavLink
+                to="profile"
+                className={({ isActive }) =>
+                  isActive ? "underline" : "hover:underline"
+                }
+              >
+                <FaUserEdit className="inline mr-2" /> Profile Page
+              </NavLink>
               <NavLink
                 to="editBiodata"
                 className={({ isActive }) =>
@@ -86,6 +94,14 @@ const DashboardLayout = () => {
 
           {!roleLoading && role === "admin" && (
             <>
+            <NavLink
+                to="profile"
+                className={({ isActive }) =>
+                  isActive ? "underline" : "hover:underline"
+                }
+              >
+                <FaUserEdit className="inline mr-2" /> Profile Page
+              </NavLink>
               <NavLink
                 to="adminDashboard"
                 className={({ isActive }) =>

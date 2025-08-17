@@ -48,7 +48,7 @@ const AdminDashboard = () => {
   return (
     <>
     <div className="p-5 grid gap-5 md:grid-cols-2">
-      <div className="bg-white border border-[#8a6c42]  rounded-lg shadow p-10 flex items-center gap-4">
+      <div className=" border border-[#8a6c42]  rounded-lg shadow p-10 flex items-center gap-4">
         <FaUsers className="text-3xl text-blue-600" />
         <div>
           <h2 className="text-xl font-bold">Total Biodata</h2>
@@ -56,7 +56,7 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      <div className="bg-white border border-[#8a6c42] rounded-lg shadow p-10 flex items-center gap-4">
+      <div className=" border border-[#8a6c42] rounded-lg shadow p-10 flex items-center gap-4">
         <FaMale className="text-3xl text-green-600" />
         <div>
           <h2 className="text-xl font-bold">Male</h2>
@@ -64,7 +64,7 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow border border-[#8a6c42] p-10 flex items-center gap-4">
+      <div className=" rounded-lg shadow border border-[#8a6c42] p-10 flex items-center gap-4">
         <FaFemale className="text-3xl text-pink-500" />
         <div>
           <h2 className="text-xl font-bold">Female</h2>
@@ -72,7 +72,7 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow border border-[#8a6c42] p-10 flex items-center gap-4">
+      <div className=" rounded-lg shadow border border-[#8a6c42] p-10 flex items-center gap-4">
         <FaCrown className="text-3xl text-yellow-500" />
         <div>
           <h2 className="text-xl font-bold">Premium</h2>
@@ -80,7 +80,7 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow border border-[#8a6c42] p-10 flex items-center gap-4">
+      <div className=" rounded-lg shadow border border-[#8a6c42] p-10 flex items-center gap-4">
         <FaDollarSign className="text-3xl text-purple-600" />
         <div>
           <h2 className="text-xl font-bold">Revenue</h2>

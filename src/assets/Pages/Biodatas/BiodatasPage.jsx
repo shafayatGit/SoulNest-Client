@@ -69,9 +69,9 @@ const BiodatasPage = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-4 px-4 py-6">
+    <div className="mt-24 flex flex-col lg:flex-row gap-4 px-4 py-6">
       {/* Sidebar Filters */}
-      <aside data-aos="fade-in" className="lg:w-1/4 border-2 border-[#8a6c42] p-4 rounded shadow bg-white">
+      <aside data-aos="fade-in" className="lg:w-1/4 border-2 border-[#8a6c42] p-4 rounded shadow ">
         <h2 className="text-2xl text-center font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
           Filter
         </h2>
@@ -145,7 +145,7 @@ const BiodatasPage = () => {
               {data?.biodatas.map((biodata) => (
                 <div data-aos="fade-down"
                   key={biodata._id}
-                  className="border border-[#8a6c42] shadow-lg shadow-[#8a6c42] p-4 rounded bg-white flex flex-col items-center"
+                  className="border border-[#8a6c42] shadow-lg shadow-[#8a6c42] p-4 rounded  flex flex-col items-center"
                 >
                   <img
                     src={biodata.profileImage}
@@ -177,7 +177,7 @@ const BiodatasPage = () => {
                   className={`px-3 py-1 border rounded ${
                     page === num + 1
                       ? "bg-blue-500 text-white"
-                      : "bg-white text-black"
+                      : " text-black"
                   }`}
                 >
                   {num + 1}

@@ -60,8 +60,8 @@ const Login = () => {
   };
 
   return (
-    <div className="libre flex justify-center items-center min-h-screen bg-gray-50">
-      <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl">
+    <div className="libre flex justify-center items-center min-h-screen ">
+      <div className="w-full max-w-md p-8  rounded-2xl shadow-xl">
         <h2
           data-aos="fade-down"
           className="libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42] text-center mb-6"

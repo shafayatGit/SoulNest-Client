@@ -10,7 +10,7 @@ const AboutUs = () => {
         });
       }, []);
   return (
-    <section className="nuni max-w-7xl mx-auto px-4 py-16">
+    <section className="mt-24 nuni max-w-7xl mx-auto px-4 py-16">
       <h2 data-aos="fade-down" className="text-4xl md:text-4xl font-bold text-center mb-6">
         🕌 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">About Us</span>
       </h2>

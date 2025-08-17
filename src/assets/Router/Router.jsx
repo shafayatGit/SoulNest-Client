@@ -19,6 +19,7 @@ import ApprovedPremium from "../Pages/Dashboard/Admin/ApprovePremium/ApprovePrem
 import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard/AdminDashboard";
 import MakeAdmin from "../Pages/Dashboard/Admin/MakeAdmin/MakeAdmin";
 import ErrorCard from "../Components/ErrorCard";
+import ProfilePage from "../Pages/Dashboard/DashboardLayout/Profile/ProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        path: "profile",
+        Component: ProfilePage,
+      },
       {
         path: "adminDashboard",
         Component: AdminDashboard,

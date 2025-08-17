@@ -53,7 +53,7 @@ const Banner = () => {
     <div data-aos="fade-in" className="libre relative z-10">
       <Slider {...settings}>
         {slides.map((slide) => (
-          <div key={slide.id} className="relative h-[80vh]">
+          <div key={slide.id} className="relative h-dvh">
             <img
               src={slide.image}
               alt={slide.title}
@@ -67,8 +67,8 @@ const Banner = () => {
                 {slide.subtitle}
               </p>
               <div className="flex gap-5">
-                <Link to={"/aboutUs"}>
-                <button className="text-[#8a6c42] text-xl mt-6">About Us</button>
+                <Link to={"/allBioData"}>
+                <button className="text-[#8a6c42] text-xl mt-6">BioData</button>
               </Link>
               <Link to={"/contactUs"}>
                 <button className="text-[#8a6c42] text-xl mt-6">Contact</button>
