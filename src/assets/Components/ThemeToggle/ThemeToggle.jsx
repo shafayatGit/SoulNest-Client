@@ -9,7 +9,7 @@ const ThemeToggle = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <button
+    <div
       onClick={toggleTheme}
       className="p-3 rounded-full bg-base-200 text-base-content 
                  transition-all duration-500 ease-in-out 
@@ -35,7 +35,7 @@ const ThemeToggle = () => {
            <CiLight size={30} />
         </div>
       </div>
-    </button>
+    </div>
   );
 };
 
