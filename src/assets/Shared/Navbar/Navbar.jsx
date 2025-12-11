@@ -72,9 +72,9 @@ const Navbar = () => {
                 ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
                 : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
             }
-            to="/aboutUs"
+            to="/about"
           >
-            About Us
+            About 
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -82,9 +82,9 @@ const Navbar = () => {
                 ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
                 : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
             }
-            to="/contactUs"
+            to="/contactMe"
           >
-            Contact Us
+            Contact Me
           </NavLink>
           {user && (
             <>
@@ -164,9 +164,9 @@ const Navbar = () => {
                 ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
                 : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[#8a6c42]"
             }
-            to="/aboutUs"
+            to="/about"
           >
-            About Us
+            About 
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -174,9 +174,9 @@ const Navbar = () => {
                 ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
                 : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[#8a6c42]"
             }
-            to="/contactUs"
+            to="/contactMe"
           >
-            Contact Us
+            Contact Me
           </NavLink>
           {user && (
             <>

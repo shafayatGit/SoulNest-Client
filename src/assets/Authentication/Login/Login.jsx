@@ -2,14 +2,13 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../AuthContext/AuthContext";
-import Aos from "aos";
 import useAxios from "../../hooks/useAxios";
 
 const Login = () => {
-  const { signIn, signInWithGoogle, user } = useContext(AuthContext);
-  const axios = useAxios()
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const axios = useAxios();
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from || "/";
@@ -19,19 +18,12 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  useEffect(() => {
-    Aos.init({
-      duration: 900, // animation duration
-      once: false, // only once per element
-      offset: 200, // offset (in px) from the original trigger point
-    });
-  }, []);
-
   const onSubmit = (data) => {
     signIn(data.email, data.password)
       .then(async (result) => {
         toast.success(`Welcome back, ${data.email.split("@")[0]}!`);
         navigate(from);
+        console.log(result);
       })
       .catch((error) => {
         console.error(error);
@@ -42,16 +34,17 @@ const Login = () => {
     signInWithGoogle()
       .then(async (result) => {
         const user = result.user;
-                toast.success(`Welcome, ${user.displayName}! 🎉`);
-                const userInfo = {
-                    email: user.email,
-                    name: user.name,
-                    role: 'user', // default role
-                    created_at: new Date().toISOString(),
-                    last_log_in: new Date().toISOString()
-                }
+        toast.success(`Welcome, ${user.displayName}! 🎉`);
+        const userInfo = {
+          email: user.email,
+          name: user.name,
+          role: "user", // default role
+          created_at: new Date().toISOString(),
+          last_log_in: new Date().toISOString(),
+        };
 
-                const userRes = await axios.post('/users', userInfo);
+        const userRes = await axios.post("/users", userInfo);
+        console.log(userRes);
         navigate(from);
       })
       .catch((error) => {
@@ -60,20 +53,13 @@ const Login = () => {
   };
 
   return (
-    <div className="libre flex justify-center items-center min-h-screen ">
-      <div className="w-full max-w-md p-8  rounded-2xl shadow-xl">
-        <h2
-          data-aos="fade-down"
-          className="libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42] text-center mb-6"
-        >
+    <div className="bg-[#e4e1da] libre flex justify-center items-center min-h-screen ">
+      <div className="bg-[#dfd9cd] w-full max-w-md p-8  rounded-2xl shadow-xl">
+        <h2 className="libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42] text-center mb-6">
           Login to Your Account
         </h2>
 
-        <form
-          data-aos="fade-up"
-          onSubmit={handleSubmit(onSubmit)}
-          className="space-y-4"
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Email */}
           <div>
             <label className="block mb-1 font-medium">Email</label>
@@ -117,7 +103,6 @@ const Login = () => {
 
         {/* Google Sign-In */}
         <button
-          data-aos="fade-down"
           onClick={handleGoogleSignIn}
           className=" w-full flex items-center justify-center gap-2"
         >
@@ -128,9 +113,8 @@ const Login = () => {
         <p className="text-center mt-6 text-sm">
           Don't have an account?{" "}
           <Link
-            data-aos="fade-down"
             to="/register"
-            className="text-[#8a6c42] font-medium hover:underline"
+            className="text-[#8a6c42] font-bold text-lg hover:underline"
           >
             Register here
           </Link>

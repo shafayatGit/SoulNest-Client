@@ -1,16 +1,14 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router";
 import toast, { Toaster } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
-import Aos from "aos";
 import useAxios from "../../hooks/useAxios";
 
 const Registration = () => {
   const axios = useAxios();
-  const { createUser, signInWithGoogle, user } = useContext(AuthContext);
-  // console.log(user);
+  const { createUser, signInWithGoogle } = useContext(AuthContext);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -22,18 +20,10 @@ const Registration = () => {
     reset,
   } = useForm();
 
-  useEffect(() => {
-    Aos.init({
-      duration: 900, // animation duration
-      once: false, // only once per element
-      offset: 200, // offset (in px) from the original trigger point
-    });
-  }, []);
-
   const onSubmit = (data) => {
     console.log("Registered User:", data);
     createUser(data.email, data.password)
-      .then(async (result) => {
+      .then(async () => {
         toast.success(`Welcome, ${data.name}! 🎉`);
         const userInfo = {
           email: data.email,
@@ -80,20 +70,13 @@ const Registration = () => {
   };
 
   return (
-    <div className="libre flex justify-center items-center min-h-screen ">
-      <div className="w-full max-w-md p-8  rounded-2xl shadow-xl">
-        <h2
-          data-aos="fade-down"
-          className="text-center mb-6 libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]"
-        >
+    <div className="bg-[#e4e1da] libre flex justify-center items-center min-h-screen ">
+      <div className=" bg-[#dfd9cd] w-full max-w-md p-8  rounded-2xl shadow-xl">
+        <h2 className="text-center mb-6 libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
           Create Account
         </h2>
 
-        <form
-          data-aos="fade-up"
-          onSubmit={handleSubmit(onSubmit)}
-          className="space-y-4"
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Name */}
           <div>
             <label className="block mb-1 font-medium">Name</label>
@@ -178,7 +161,6 @@ const Registration = () => {
         <div className="divider my-4">OR</div>
         {/* Google Sign-In */}
         <button
-          data-aos="fade-down"
           onClick={handleGoogleSignIn}
           className=" w-full flex items-center justify-center gap-2"
         >
@@ -186,11 +168,11 @@ const Registration = () => {
         </button>
 
         {/* Link to Registration */}
-        <p data-aos="fade-down" className="text-center mt-6 text-sm">
+        <p className="text-center mt-6 text-sm">
           Already have an account?{" "}
           <Link
             to="/login"
-            className="text-[#8a6c42] font-medium hover:underline"
+            className="text-[#8a6c42] font-bold text-lg hover:underline"
           >
             Login
           </Link>

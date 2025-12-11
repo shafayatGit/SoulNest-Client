@@ -52,11 +52,11 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/aboutUs",
+        path: "/about",
         Component: AboutUs,
       },
       {
-        path: "/contactUs",
+        path: "/contactMe",
         Component: ContactUs,
       },
       {

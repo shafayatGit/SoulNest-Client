@@ -1,23 +1,12 @@
-import { useContext, useEffect } from "react";
-import { FaFacebook, FaInstagram, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { useContext } from "react";
+import { FaFacebook, FaEnvelope, FaLinkedin, FaLink } from "react-icons/fa";
 import { Link } from "react-router";
 import { AuthContext } from "../../AuthContext/AuthContext";
-import Aos from "aos";
 
 const Footer = () => {
   const { user } = useContext(AuthContext);
-  useEffect(() => {
-    Aos.init({
-      duration: 900, // animation duration
-      once: false, // only once per element
-      offset: 200, // offset (in px) from the original trigger point
-    });
-  }, []);
   return (
-    <footer
-      data-aos="fade-right"
-      className="nuni bg-gradient-to-r from-[#8a6c42] via-[#8a7457] to-[#8f816d] text-white mt-16"
-    >
+    <footer className="nuni bg-gradient-to-r from-[#8a6c42] via-[#8a7457] to-[#8f816d] text-white">
       <div className="max-w-7xl mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo & Name */}
         <div>
@@ -81,27 +70,36 @@ const Footer = () => {
             Contact Us
           </h3>
           <p className="text-sm">📍 Dhaka, Bangladesh</p>
-          <p className="text-sm">📞 +880-1234-567890</p>
+          <p className="text-sm">📞 +880-1635873987</p>
           <p className="text-sm flex items-center gap-2">
-            <FaEnvelope /> support@soulnest.com
+            <FaEnvelope /> shafayathossain.drmc@gmail.com
           </p>
         </div>
 
         {/* Social Media */}
         <div>
           <h3 className="text-xl font-semibold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#b9a589]">
-            Follow Us
+            Follow Me On
           </h3>
           <div className="flex gap-4 text-2xl">
-            <a href="#" className="hover:text-[#bda373]">
+            <Link
+              to="https://shafayat-dev.web.app/"
+              className="hover:text-[#bda373]"
+            >
+              <FaLink />
+            </Link>
+            <Link
+              to="www.facebook.com/ShafayatHossain.DRMC"
+              className="hover:text-[#bda373]"
+            >
               <FaFacebook />
-            </a>
-            <a href="#" className="hover:text-[#bda373]">
-              <FaTwitter />
-            </a>
-            <a href="#" className="hover:text-[#bda373]">
-              <FaInstagram />
-            </a>
+            </Link>
+            <Link
+              to="linkedin.com/in/shafayat-hossain-patowary/"
+              className="hover:text-[#bda373]"
+            >
+              <FaLinkedin />
+            </Link>
           </div>
         </div>
       </div>
