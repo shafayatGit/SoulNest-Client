@@ -62,7 +62,7 @@ const BiodatasPage = () => {
       {/* Sidebar Filters */}
       <aside
         
-        className="lg:w-1/4 border-2 border-[#8a6c42] p-4 rounded shadow "
+        className="lg:w-1/4 border-2 bg-[#e4e1da] border-[#8a6c42] p-4 rounded shadow "
       >
         <h2 className="text-2xl text-center font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
           Filter

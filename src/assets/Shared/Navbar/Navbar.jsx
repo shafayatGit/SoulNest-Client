@@ -1,5 +1,5 @@
 // Navbar.jsx
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../AuthContext/AuthContext";
@@ -8,14 +8,37 @@ import ThemeToggle from "../../Components/ThemeToggle/ThemeToggle";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  useEffect(() => {
-    Aos.init({
-      duration: 900, // animation duration
-      once: false, // only once per element
-      offset: 200, // offset (in px) from the original trigger point
-    });
-  }, []);
 
+  //NavLinks
+  const navLinks = [
+    {
+      id: "1",
+      title: "Home",
+      href: "/",
+    },
+    {
+      id: "2",
+      title: "BioData",
+      href: "allBiodata",
+    },
+    {
+      id: "3",
+      title: "About",
+      href: "about",
+    },
+    {
+      id: "4",
+      title: "Contact",
+      href: "contactMe",
+    },
+    user && {
+      id: "5",
+      title: "Dashboard",
+      href: "dashboard",
+    },
+  ];
+
+  //Logout Button
   const handleLogOut = () => {
     logOut()
       .then((result) => {
@@ -23,6 +46,8 @@ const Navbar = () => {
       })
       .catch((error) => console.log(error));
   };
+
+  //toggle nav for mobile device
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -37,7 +62,7 @@ const Navbar = () => {
               alt="Logo"
               className="md:h-12 md:w-12 w-8 h-8"
             />
-            <span className="tracking-wider libre text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
+            <span className="tracking-wider libre text-2xl md:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
               SoulNest
             </span>
           </Link>
@@ -45,61 +70,20 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Menu */}
-        <div className="nuni text-[#8a6c42] hidden font-medium tracking-wider md:flex text-lg space-x-6">
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
-            }
-            to="/"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
-            }
-            to="/allBiodata"
-          >
-            Biodata
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
-            }
-            to="/about"
-          >
-            About 
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
-            }
-            to="/contactMe"
-          >
-            Contact Me
-          </NavLink>
-          {user && (
-            <>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                    : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42]"
-                }
-                to="/dashboard"
-              >
-                Dashboard
-              </NavLink>
-            </>
-          )}
+        <div className="nuni text-[#8a6c42] hidden font-medium tracking-wider md:flex md:text-sm lg:text-lg space-x-6">
+          {navLinks.map((nav) => (
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
+                  : " hover:border-b-2 "
+              }
+              to={nav.href}
+              onClick={()=>window.scrollTo(0,0)}
+            >
+              {nav.title}
+            </NavLink>
+          ))}
         </div>
 
         <div className="hidden text-[#8a6c42] nuni md:block">
@@ -127,71 +111,29 @@ const Navbar = () => {
         {/* Mobile Menu Icon */}
         <div className="md:hidden">
           <button onClick={toggleMenu}>
-            {isOpen ? <FaTimes className="h-4 w-4 " /> : <FaBars className="h-4 w-4" />}
+            {isOpen ? (
+              <FaTimes className="h-4 w-4 " />
+            ) : (
+              <FaBars className="h-4 w-4" />
+            )}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div
-          data-aos="fade-left"
-          className="md:hidden bg-black/80 bg-opacity-40  shadow-md px-6 py-4 space-y-8 absolute flex flex-col text-left w-full z-[1000]"
-        >
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "border-r-4 border-[#8a6c42]  text-[#8a6c42]"
-                : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"
-            }
-            to="/"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "border-r-4 border-[#8a6c42] text-[#8a6c42]"
-                : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[white]"
-            }
-            to="/allBiodata"
-          >
-            Biodata
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "border-r-4 border-b-[#8a6c42] text-[#8a6c42]"
-                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[white]"
-            }
-            to="/about"
-          >
-            About 
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "border-r-4 border-b-[#8a6c42] text-[#8a6c42]"
-                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[white]"
-            }
-            to="/contactMe"
-          >
-            Contact Me
-          </NavLink>
-          {user && (
-            <>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "border-r-4 border-b-[#8a6c42] text-[#8a6c42]"
-                    : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[white]"
-                }
-                to="/dashboard"
-              >
-                Dashboard
-              </NavLink>
-            </>
-          )}
+        <div className="md:hidden bg-gradient-to-b from-[#8a6c42] to-[#453315] shadow-md px-6 py-4 space-y-8 absolute flex flex-col text-right w-64 items-end h-dvh right-0 z-[1000]">
+          {navLinks.map((nav) => (
+            <NavLink
+              key={nav.id}
+              className={({ isActive }) =>
+                isActive ? "border-r-4 border-black pr-4 " : "   text-white"
+              }
+              to={nav.href}
+            >
+              {nav.title}
+            </NavLink>
+          ))}
 
           <div>
             {user ? (
