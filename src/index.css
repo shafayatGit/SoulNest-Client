@@ -49,7 +49,7 @@ button:active {
 
 /* Loaders */
 /* From Uiverse.io by bociKond */ 
-.loader {
+/* .loader {
   width: 44.8px;
   height: 44.8px;
   color: #8a6c42;
@@ -85,5 +85,45 @@ button:active {
   100% {
     inset: 0;
     transform: rotate(90deg);
+  }
+} */
+
+.loader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  gap: 6px;
+}
+.loader span{
+  width: 6px;
+  height: 50px;
+  background: #8a6c42;
+  animation: scale 0.9s ease-in-out infinite;
+}
+.loader span:nth-child(2){
+  background: #8b7556;
+  animation-delay: -0.8s;
+}
+.loader span:nth-child(3){
+  background: #887e70;
+  animation-delay: -0.7s;
+}
+.loader span:nth-child(4){
+  background: #beb6ab;
+  animation-delay: -0.6s;
+}
+.loader span:nth-child(5){
+  background: #c5c1bc;
+  animation-delay: -0.5s;
+}
+
+@keyframes scale{
+  0%,40%,100%{
+    transform: scaleY(0.05);
+  }
+  20%{
+    transform: scaleY(1);
   }
 }

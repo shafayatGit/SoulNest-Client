@@ -30,14 +30,14 @@ const Navbar = () => {
     <nav className="fixed top-0 shadow-md backdrop-blur-md transition-all duration-300 transform w-full z-[1000]">
       <div className=" px-4 py-3 flex justify-between items-center">
         {/* Logo and Website Name */}
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           <Link to="/" className="flex items-center space-x-2">
             <img
               src="https://i.ibb.co/bMHW9r5z/Logo.png"
               alt="Logo"
-              className="h-12 w-12"
+              className="md:h-12 md:w-12 w-8 h-8"
             />
-            <span className="tracking-wider libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
+            <span className="tracking-wider libre text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
               SoulNest
             </span>
           </Link>
@@ -127,7 +127,7 @@ const Navbar = () => {
         {/* Mobile Menu Icon */}
         <div className="md:hidden">
           <button onClick={toggleMenu}>
-            {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+            {isOpen ? <FaTimes className="h-4 w-4 " /> : <FaBars className="h-4 w-4" />}
           </button>
         </div>
       </div>
@@ -135,13 +135,13 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div
-          data-aos="fade-down"
-          className="md:hidden bg-black/30 bg-opacity-40  shadow-md px-6 py-4 space-y-8 absolute flex flex-col text-center w-full z-[1000]"
+          data-aos="fade-left"
+          className="md:hidden bg-black/80 bg-opacity-40  shadow-md px-6 py-4 space-y-8 absolute flex flex-col text-left w-full z-[1000]"
         >
           <NavLink
             className={({ isActive }) =>
               isActive
-                ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
+                ? "border-r-4 border-[#8a6c42]  text-[#8a6c42]"
                 : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-white"
             }
             to="/"
@@ -151,8 +151,8 @@ const Navbar = () => {
           <NavLink
             className={({ isActive }) =>
               isActive
-                ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[#8a6c42]"
+                ? "border-r-4 border-[#8a6c42] text-[#8a6c42]"
+                : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[white]"
             }
             to="/allBiodata"
           >
@@ -161,8 +161,8 @@ const Navbar = () => {
           <NavLink
             className={({ isActive }) =>
               isActive
-                ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[#8a6c42]"
+                ? "border-r-4 border-b-[#8a6c42] text-[#8a6c42]"
+                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[white]"
             }
             to="/about"
           >
@@ -171,8 +171,8 @@ const Navbar = () => {
           <NavLink
             className={({ isActive }) =>
               isActive
-                ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[#8a6c42]"
+                ? "border-r-4 border-b-[#8a6c42] text-[#8a6c42]"
+                : "hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[white]"
             }
             to="/contactMe"
           >
@@ -183,8 +183,8 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
-                    : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[#8a6c42]"
+                    ? "border-r-4 border-b-[#8a6c42] text-[#8a6c42]"
+                    : " hover:border-b-2 hover:border-b-[#8a6c42] hover:text-[#8a6c42] text-[white]"
                 }
                 to="/dashboard"
               >

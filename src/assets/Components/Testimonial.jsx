@@ -84,14 +84,14 @@ const TestimonialsSection= () => {
             <span className="text-sm font-medium" style={{ color: '#8a6c42' }}>Community Stories</span>
           </div>
           
-          <h2 className="text-4xl lg:text-5xl font-bold  mb-6">
+          <h2 className="text-3xl lg:text-5xl font-bold  mb-6">
             What Our
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
               Community Says
             </span>
           </h2>
           
-          <p className="text-xl  max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg nuni max-w-3xl mx-auto leading-relaxed">
             Real stories from real people who have transformed their lives through mindfulness and community support.
           </p>
         </div>
@@ -144,7 +144,7 @@ const TestimonialsSection= () => {
                   </div>
                 </div>
 
-                <blockquote className="text-xl lg:text-2xl  leading-relaxed mb-8 font-medium">
+                <blockquote className="text-lg lg:text-2xl  leading-relaxed mb-8 font-medium">
                   "{current.text}"
                 </blockquote>
 

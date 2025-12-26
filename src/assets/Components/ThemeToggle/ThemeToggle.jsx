@@ -11,28 +11,28 @@ const ThemeToggle = () => {
   return (
     <div
       onClick={toggleTheme}
-      className="p-3 rounded-full bg-base-200 text-base-content 
+      className="rounded-full text-base-content 
                  transition-all duration-500 ease-in-out 
                  hover:scale-110 hover:rotate-6 shadow-md"
     >
       <div className="relative w-6 h-6">
         <div
-          className={`absolute transition-all duration-500 ease-in-out transform h-4 w-4 md:h-6 md:w-6 ${
+          className={`absolute transition-all duration-500 ease-in-out transform  ${
             theme === "light"
               ? "opacity-100 rotate-0 scale-100"
               : "opacity-0 rotate-45 scale-0"
           }`}
         >
-          <MdDarkMode  size={30} />
+          <MdDarkMode className="text-[#8a6c42] w-6 h-6"  />
         </div>
         <div
-          className={`absolute transition-all duration-500 ease-in-out transform h-5 w-5 md:h-7 md:w-7 ${
+          className={`absolute transition-all duration-500 ease-in-out transform ${
             theme === "dark"
               ? "opacity-100 rotate-0 scale-100"
               : "opacity-0 -rotate-45 scale-0"
           }`}
         >
-           <CiLight size={30} />
+           <CiLight className="w-6 h-6" />
         </div>
       </div>
     </div>

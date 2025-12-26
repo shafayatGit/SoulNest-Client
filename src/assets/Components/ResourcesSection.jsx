@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   BookOpen, 
   Play, 
@@ -18,16 +18,16 @@ import {
 } from 'lucide-react';
 
 const ResourcesSection = () => {
-  const [activeCategory, setActiveCategory] = useState('all');
-  const [searchTerm, setSearchTerm] = useState('');
+  // const [activeCategory, setActiveCategory] = useState('all');
+  // const [searchTerm, setSearchTerm] = useState('');
 
-  const categories = [
-    { id: 'all', label: 'All Resources', icon: BookOpen },
-    { id: 'meditations', label: 'Meditations', icon: Headphones },
-    { id: 'articles', label: 'Articles', icon: FileText },
-    { id: 'videos', label: 'Videos', icon: Video },
-    { id: 'courses', label: 'Courses', icon: Award }
-  ];
+  // const categories = [
+  //   { id: 'all', label: 'All Resources', icon: BookOpen },
+  //   { id: 'meditations', label: 'Meditations', icon: Headphones },
+  //   { id: 'articles', label: 'Articles', icon: FileText },
+  //   { id: 'videos', label: 'Videos', icon: Video },
+  //   { id: 'courses', label: 'Courses', icon: Award }
+  // ];
 
   const resources = [
     {
@@ -110,12 +110,12 @@ const ResourcesSection = () => {
     }
   ];
 
-  const filteredResources = resources.filter(resource => {
-    const matchesCategory = activeCategory === 'all' || resource.type === activeCategory;
-    const matchesSearch = resource.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         resource.description.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  // const filteredResources = resources.filter(resource => {
+  //   const matchesCategory = activeCategory === 'all' || resource.type === activeCategory;
+  //   const matchesSearch = resource.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //                        resource.description.toLowerCase().includes(searchTerm.toLowerCase());
+  //   return matchesCategory && matchesSearch;
+  // });
 
   const featuredResources = resources.filter(resource => resource.featured);
 
@@ -154,14 +154,14 @@ const ResourcesSection = () => {
             <span className="text-sm font-medium" style={{ color: '#8a6c42' }}>Learning Resources</span>
           </div>
           
-          <h2 className="text-4xl lg:text-5xl font-bold  mb-6">
+          <h2 className="text-3xl lg:text-5xl font-bold  mb-6">
             Expand Your
             <span className="block text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg, #8a6c42, #b8956a)' }}>
               Wellness Knowledge
             </span>
           </h2>
           
-          <p className="text-xl  max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg  max-w-3xl mx-auto leading-relaxed">
             Access our curated collection of meditations, articles, videos, and courses designed to support your journey.
           </p>
         </div>

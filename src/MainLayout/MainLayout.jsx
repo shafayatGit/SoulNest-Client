@@ -16,8 +16,15 @@ const MainLayout = () => {
   return (
     <div>
       {isLoading ? (
-        <div className=" max-w-6xl mx-auto w-full h-dvh flex justify-center items-center">
-          <div class="loader"></div>
+        <div className=" max-w-8xl mx-auto w-full h-dvh flex justify-center items-center">
+          {/* <div class="loader"></div> */}
+          <div className="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       ) : (
         <div>

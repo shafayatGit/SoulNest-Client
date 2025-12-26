@@ -25,18 +25,11 @@ const BiodatasPage = () => {
     minAge: "",
     maxAge: "",
   });
-  useEffect(() => {
-      Aos.init({
-        duration: 900, // animation duration
-        once: false, // only once per element
-        offset: 200, // offset (in px) from the original trigger point
-      });
-    }, []);
 
-  const limit = 9;
-  const [maxAge, setMaxAge] = useState(60);
+  const limit = 15;
+  // const [maxAge, setMaxAge] = useState(60);
 
-  const { data, isLoading, refetch } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["biodatas", page, filters],
     queryFn: async () => {
       const query = new URLSearchParams({
@@ -59,10 +52,6 @@ const BiodatasPage = () => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
-  const handleApplyFilters = () => {
-    setPage(1);
-    refetch();
-  };
 
   const handleView = (id) => {
     navigate(`/biodata/${id}`);
@@ -71,7 +60,10 @@ const BiodatasPage = () => {
   return (
     <div className="mt-24 flex flex-col lg:flex-row gap-4 px-4 py-6">
       {/* Sidebar Filters */}
-      <aside data-aos="fade-in" className="lg:w-1/4 border-2 border-[#8a6c42] p-4 rounded shadow ">
+      <aside
+        
+        className="lg:w-1/4 border-2 border-[#8a6c42] p-4 rounded shadow "
+      >
         <h2 className="text-2xl text-center font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
           Filter
         </h2>
@@ -107,7 +99,7 @@ const BiodatasPage = () => {
           </select>
         </div>
 
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <div>
             <label>Max Age: {maxAge}</label>
             <input
@@ -119,7 +111,7 @@ const BiodatasPage = () => {
               className="w-full"
             />
           </div>
-        </div>
+        </div> */}
 
         {/* <button
           onClick={handleApplyFilters}
@@ -131,21 +123,32 @@ const BiodatasPage = () => {
 
       {/* Biodatas Grid */}
       <section className="lg:w-3/4">
-        <h2 data-aos="fade-up" className="text-4xl text-center font-semibold mb-10 mt-10 text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
+        <h2
+          
+          className="text-4xl text-center font-semibold mb-10 mt-10 text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]"
+        >
           All Biodata
         </h2>
 
         {isLoading ? (
           <div className=" max-w-6xl mx-auto w-full h-dvh flex justify-center items-center">
-          <div class="loader"></div>
-        </div>
+            <div className="loader">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
         ) : (
           <>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">{
+              }
               {data?.biodatas.map((biodata) => (
-                <div data-aos="fade-down"
+                <div
+                  
                   key={biodata._id}
-                  className="border border-[#8a6c42] shadow-lg shadow-[#8a6c42] p-4 rounded  flex flex-col items-center"
+                  className="border border-[#8a6c42] bg-[#e4e1da] shadow-lg shadow-[#8a6c42] p-4 rounded  flex flex-col items-center"
                 >
                   <img
                     src={biodata.profileImage}
@@ -175,9 +178,7 @@ const BiodatasPage = () => {
                   key={num}
                   onClick={() => setPage(num + 1)}
                   className={`px-3 py-1 border rounded ${
-                    page === num + 1
-                      ? "bg-blue-500 text-white"
-                      : " text-black"
+                    page === num + 1 ? "bg-blue-500 text-white" : " text-black"
                   }`}
                 >
                   {num + 1}
