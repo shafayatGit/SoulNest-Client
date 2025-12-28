@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 // import axios from "axios";
 import useAxios from "../../hooks/useAxios";
@@ -61,12 +61,12 @@ const BiodatasPage = () => {
     <div className="mt-24 flex flex-col lg:flex-row gap-4 px-4 py-6">
       {/* Sidebar Filters */}
       <aside
-        
-        className="lg:w-1/4 border-2 bg-[#e4e1da] border-[#8a6c42] p-4 rounded shadow "
+        className="lg:w-1/4 p-4 rounded shadow md:sticky md:top-22 md:h-full"
       >
-        <h2 className="text-2xl text-center font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
-          Filter
+        <h2 className="text-3xl text-left font-semibold mb-1 text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
+          Filter by
         </h2>
+        <div className="border-2 border-[#bda373] mb-3 w-60"></div>
 
         <div className="mb-4">
           <label className="block mb-1 font-medium">Biodata Type</label>
@@ -148,7 +148,7 @@ const BiodatasPage = () => {
                 <div
                   
                   key={biodata._id}
-                  className="border border-[#8a6c42] bg-[#e4e1da] shadow-lg shadow-[#8a6c42] p-4 rounded  flex flex-col items-center"
+                  className="hover:scale-102 active:scale-102 border border-[#8a6c42] shadow-md hover:shadow-lg shadow-[#8a6c42] p-4 rounded-lg transition duration-200 flex flex-col items-center"
                 >
                   <img
                     src={biodata.profileImage}

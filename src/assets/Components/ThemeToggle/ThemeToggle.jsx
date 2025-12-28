@@ -32,7 +32,7 @@ const ThemeToggle = () => {
               : "opacity-0 -rotate-45 scale-0"
           }`}
         >
-           <CiLight className="w-6 h-6" />
+           <CiLight className="w-6 h-6 text-[#8a6c42]" />
         </div>
       </div>
     </div>

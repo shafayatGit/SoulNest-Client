@@ -62,7 +62,7 @@ const Login = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Email */}
           <div>
-            <label className="block mb-1 font-medium">Email</label>
+            <label className="block mb-1 font-medium text-[#8a6c42]">Email</label>
             <input
               type="email"
               {...register("email", { required: "Email is required" })}
@@ -78,7 +78,7 @@ const Login = () => {
 
           {/* Password */}
           <div>
-            <label className="block mb-1 font-medium">Password</label>
+            <label className="block mb-1 font-medium text-[#8a6c42]">Password</label>
             <input
               type="password"
               {...register("password", { required: "Password is required" })}
@@ -99,7 +99,7 @@ const Login = () => {
         </form>
 
         {/* Divider */}
-        <div className="divider my-4">OR</div>
+        <div className="divider my-4 text-[#8a6c42]">OR</div>
 
         {/* Google Sign-In */}
         <button
@@ -110,7 +110,7 @@ const Login = () => {
         </button>
 
         {/* Link to Registration */}
-        <p className="text-center mt-6 text-sm">
+        <p className="text-center mt-6 text-sm text-[#8a6c42]">
           Don't have an account?{" "}
           <Link
             to="/register"

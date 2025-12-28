@@ -79,7 +79,7 @@ const Registration = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Name */}
           <div>
-            <label className="block mb-1 font-medium">Name</label>
+            <label className="block mb-1 font-medium text-[#8a6c42]">Name</label>
             <input
               type="text"
               {...register("name", { required: "Name is required" })}
@@ -93,7 +93,7 @@ const Registration = () => {
 
           {/* Email */}
           <div>
-            <label className="block mb-1 font-medium">Email</label>
+            <label className="block mb-1 font-medium text-[#8a6c42]">Email</label>
             <input
               type="email"
               {...register("email", {
@@ -115,7 +115,7 @@ const Registration = () => {
 
           {/* Password */}
           <div>
-            <label className="block mb-1 font-medium">Password</label>
+            <label className="block mb-1 font-medium text-[#8a6c42]">Password</label>
             <input
               type="password"
               {...register("password", {
@@ -137,7 +137,7 @@ const Registration = () => {
 
           {/* Photo URL */}
           <div>
-            <label className="block mb-1 font-medium">Photo URL</label>
+            <label className="block mb-1 font-medium text-[#8a6c42]">Photo URL</label>
             <input
               type="url"
               {...register("photo", { required: "Photo URL is required" })}
@@ -158,7 +158,7 @@ const Registration = () => {
         </form>
 
         {/* Divider */}
-        <div className="divider my-4">OR</div>
+        <div className="divider my-4 text-[#8a6c42]">OR</div>
         {/* Google Sign-In */}
         <button
           onClick={handleGoogleSignIn}
@@ -168,7 +168,7 @@ const Registration = () => {
         </button>
 
         {/* Link to Registration */}
-        <p className="text-center mt-6 text-sm">
+        <p className="text-center mt-6 text-sm text-[#8a6c42]">
           Already have an account?{" "}
           <Link
             to="/login"

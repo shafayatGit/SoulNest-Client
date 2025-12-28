@@ -70,7 +70,7 @@ const Banner = () => {
                 <Link to={"/allBioData"}>
                 <button className="text-[#8a6c42] text-xl mt-6">BioData</button>
               </Link>
-              <Link to={"/contactUs"}>
+              <Link to={"/contactMe"}>
                 <button className="text-[#8a6c42] text-xl mt-6">Contact</button>
               </Link>
               </div>

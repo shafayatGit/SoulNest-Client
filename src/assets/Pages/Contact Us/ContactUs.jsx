@@ -22,7 +22,7 @@ const ContactUs = () => {
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 ">
         📞{" "}
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
-          Contact Us
+          Contact Me
         </span>
       </h2>
 

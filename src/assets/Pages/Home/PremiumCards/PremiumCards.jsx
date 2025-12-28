@@ -18,8 +18,14 @@ const PremiumCards = () => {
   if (isLoading)
     return (
       <div className=" max-w-6xl mx-auto w-full h-dvh flex justify-center items-center">
-          <div class="loader"></div>
-        </div>
+            <div className="loader">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
     );
 
   return (
@@ -30,9 +36,9 @@ const PremiumCards = () => {
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {premiumUsers.map(user => (
-          <div data-aos="fade-down"
+          <div
             key={user._id}
-            className="bg-[#e9e5e1] rounded-2xl shadow-[#8a6c42] shadow-md hover:shadow-xl active:shadow-xl border border-transparent hover:border-[#8a6c42] active:border-[#8a6c42] transition-all duration-3000 hover:scale-105 p-5"
+            className="bg-[#e9e5e1] rounded-2xl shadow-[#8a6c42] shadow-md hover:shadow-lg active:shadow-xl border border-transparent hover:border-[#8a6c42] active:border-[#8a6c42] transition-all duration-300 hover:scale-105 p-5"
           >
             <div className="flex justify-center">
               <img

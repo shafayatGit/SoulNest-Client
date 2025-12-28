@@ -59,7 +59,7 @@ const BiodataDetails = () => {
         email: user.email,
         added_at: new Date(),
       };
-      //toast.loading("Loading");
+      toast.loading("Loading");
       await axiosSecure.post("/favourites", payload);
       toast.success("Success", "Added to Favourites", "success");
     } catch (err) {

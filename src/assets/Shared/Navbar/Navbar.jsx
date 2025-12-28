@@ -11,32 +11,12 @@ const Navbar = () => {
 
   //NavLinks
   const navLinks = [
-    {
-      id: "1",
-      title: "Home",
-      href: "/",
-    },
-    {
-      id: "2",
-      title: "BioData",
-      href: "allBiodata",
-    },
-    {
-      id: "3",
-      title: "About",
-      href: "about",
-    },
-    {
-      id: "4",
-      title: "Contact",
-      href: "contactMe",
-    },
-    user && {
-      id: "5",
-      title: "Dashboard",
-      href: "dashboard",
-    },
-  ];
+  { id: "1", title: "Home", links: "/" },
+  { id: "2", title: "BioData", links: "/allBiodata" },
+  { id: "3", title: "About", links: "/about" },
+  { id: "4", title: "Contact", links: "/contactMe" },
+  user && { id: "5", title: "Dashboard", links: "/dashboard" },
+].filter(Boolean);
 
   //Logout Button
   const handleLogOut = () => {
@@ -71,15 +51,16 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="nuni text-[#8a6c42] hidden font-medium tracking-wider md:flex md:text-sm lg:text-lg space-x-6">
-          {navLinks.map((nav) => (
+          {navLinks.map((nav, index) => (
             <NavLink
+              key={index}
               className={({ isActive }) =>
                 isActive
                   ? "border-b-2 border-b-[#8a6c42] text-[#8a6c42]"
                   : " hover:border-b-2 "
               }
-              to={nav.href}
-              onClick={()=>window.scrollTo(0,0)}
+              to={nav.links}
+              onClick={() => window.scrollTo(0, 0)}
             >
               {nav.title}
             </NavLink>
@@ -122,14 +103,14 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-gradient-to-b from-[#8a6c42] to-[#453315] shadow-md px-6 py-4 space-y-8 absolute flex flex-col text-right w-64 items-end h-dvh right-0 z-[1000]">
+        <div className="md:hidden bg-gradient-to-b from-[#8a6c42] to-[#453315] shadow-md px-6 py-4 space-y-6 absolute flex flex-col text-right text-sm w-64 items-end h-dvh right-0 z-[1000]">
           {navLinks.map((nav) => (
             <NavLink
               key={nav.id}
               className={({ isActive }) =>
-                isActive ? "border-r-4 border-black pr-4 " : "   text-white"
+                isActive ? "border-r-4 border-black pr-4 " : "text-white"
               }
-              to={nav.href}
+              to={nav.links}
             >
               {nav.title}
             </NavLink>

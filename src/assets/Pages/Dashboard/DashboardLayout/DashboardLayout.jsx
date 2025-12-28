@@ -26,6 +26,34 @@ const DashboardLayout = () => {
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
+  const adminLinks = [
+    {
+      icon: <FaUserEdit />,
+      title: "Profile Page",
+      href: "profile",
+    },
+    {
+      icon: <FaUserEdit />,
+      title: "Admin Dashboard",
+      href: "adminDashboard",
+    },
+    {
+      icon: <FaUserEdit />,
+      title: "Make Admin",
+      href: "makeAdmin",
+    },
+    {
+      icon: <FaCrown />,
+      title: "Approved Premium Request",
+      href: "approvedPremium",
+    },
+    {
+      icon: <HiOutlineUserAdd />,
+      title: "Approved Contact Requests",
+      href: "approvedContactRequest",
+    },
+  ];
+
   return (
     <div className="flex h-screen ">
       {/* Sidebar */}
@@ -92,51 +120,20 @@ const DashboardLayout = () => {
 
           {/* Admin Links */}
 
-          {!roleLoading && role === "admin" && (
-            <>
-            <NavLink
-                to="profile"
-                className={({ isActive }) =>
-                  isActive ? "underline" : "hover:underline"
-                }
-              >
-                <FaUserEdit className="inline mr-2" /> Profile Page
-              </NavLink>
-              <NavLink
-                to="adminDashboard"
-                className={({ isActive }) =>
-                  isActive ? "underline" : "hover:underline"
-                }
-              >
-                <FaUserEdit className="inline mr-2" /> Admin Dashboard
-              </NavLink>
-              <NavLink
-                to="makeAdmin"
-                className={({ isActive }) =>
-                  isActive ? "underline" : "hover:underline"
-                }
-              >
-                <FaUserEdit className="inline mr-2" /> Make Admin
-              </NavLink>
-              <NavLink
-                to="approvePremium"
-                className={({ isActive }) =>
-                  isActive ? "underline" : "hover:underline"
-                }
-              >
-                <FaCrown className="inline mr-2" /> Approved premium request
-              </NavLink>
-              <NavLink
-                to="approvedContactRequest"
-                className={({ isActive }) =>
-                  isActive ? "underline" : "hover:underline"
-                }
-              >
-                <HiOutlineUserAdd className="inline mr-2" /> Approved contact
-                request
-              </NavLink>
-            </>
-          )}
+          {!roleLoading &&
+            role === "admin" &&
+            adminLinks.map((nav) => (
+              <>
+                <NavLink
+                  to="profile"
+                  className={({ isActive }) =>
+                    isActive ? "underline flex gap-2 items-center" : "hover:underline flex gap-2 items-center"
+                  }
+                >
+                  {nav.icon} {nav.title}
+                </NavLink>
+              </>
+            ))}
         </nav>
         <button
           onClick={handleLogOut}
@@ -157,20 +154,24 @@ const DashboardLayout = () => {
       {/* Content Area */}
       <div className="flex-1 flex flex-col">
         {/* Top Bar */}
-        <div className="bg-white p-4 shadow-md flex items-center lg:hidden">
-          <button onClick={toggleSidebar} className="text-2xl">
-            {isSidebarOpen ? <FaTimes /> : <FaBars />}
-          </button>
+        <div className="bg-white p-4 shadow-md flex justify-between lg:hidden">
           <Link to="/" className="flex items-center space-x-2">
             <img
               src="https://i.ibb.co/bMHW9r5z/Logo.png"
               alt="Logo"
-              className="h-12 w-12"
+              className="md:h-12 md:w-12 w-8 h-8"
             />
-            <span className="tracking-wider libre text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
+            <span className="tracking-wider libre text-2xl md:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#bda373] to-[#8a6c42]">
               SoulNest
             </span>
           </Link>
+          <button onClick={toggleSidebar} className="text-2xl">
+            {isSidebarOpen ? (
+              <FaTimes className="h-4 w-4" />
+            ) : (
+              <FaBars className="h-4 w-4" />
+            )}
+          </button>
         </div>
 
         {/* Main Content */}
