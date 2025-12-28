@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 // import axios from "axios";
 import useAxios from "../../hooks/useAxios";
 import { useNavigate } from "react-router";
-import Aos from "aos";
 
 const divisions = [
   "Dhaka",
